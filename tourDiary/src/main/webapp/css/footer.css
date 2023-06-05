@@ -1,0 +1,30 @@
+	footer
+	{
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: 15px;
+		color: white;
+		margin: auto;
+		border-width: 1px;
+		border-top-style: solid;
+		background-color: #006CFA;
+		width: 100%;
+		height: 300px;
+	}
+
+	footer #textdiv
+	{
+		margin-top: 40px;
+		width: 1280px;
+		height: 250px;
+		background-color: #006CFA;
+		margin: auto;
+	}
+	
+	footer img
+	{
+		margin-left: 20px;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		margin-top: 15px;
+	}
