@@ -1,22 +1,20 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class DiaryWriter {
-	private int post_Num, readCount, post_Like;    // ���̾ �⺻ �Խ��� ����
+	private int post_Num, readCount, post_Like;    
 	private String user_Id, post_Date, post_Title, post_Body, post_Img, hashTag, area, userPic, repPic;
 	
 
-	@JsonProperty("memo")
+
 	private String memo;
 	
-	@JsonProperty("start_date")  // 정밀한 매핑을 해서 Jackson라이브러리에서 제공하는 어노테이션.
+	
 	private String start_date;
 	
-	@JsonProperty("end_date")
+	
 	private String end_date;
 	
-	@JsonProperty("total_date")
+
 	private int total_date;
 	
 

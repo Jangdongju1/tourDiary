@@ -1,12 +1,18 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Attraction {
-	private String attraction_name, attraction_addr, site1, site2, attraction_detail, attraction_pic;
-	private double latitude, longitude;
 	
-	@JsonProperty("attraction_num")
+	
+	private String attraction_name;
+	private String attraction_addr;
+	private String site_1;
+	private String site_2;
+	private String attraction_detail;
+	private String attraction_pic;
+	private double latitude;
+	private double longitude;
+	
+	
 	private int attraction_num;
 	public String getAttraction_name() {
 		return attraction_name;
@@ -20,20 +26,21 @@ public class Attraction {
 	public void setAttraction_addr(String attraction_addr) {
 		this.attraction_addr = attraction_addr;
 	}
-	public String getSite1() {
-		return site1;
-	}
-	public void setSite1(String site1) {
-		this.site1 = site1;
-	}
-	public String getSite2() {
-		return site2;
-	}
-	public void setSite2(String site2) {
-		this.site2 = site2;
-	}
+
 	public String getAttraction_detail() {
 		return attraction_detail;
+	}
+	public String getSite_1() {
+		return site_1;
+	}
+	public void setSite_1(String site_1) {
+		this.site_1 = site_1;
+	}
+	public String getSite_2() {
+		return site_2;
+	}
+	public void setSite_2(String site_2) {
+		this.site_2 = site_2;
 	}
 	public void setAttraction_detail(String attraction_detail) {
 		this.attraction_detail = attraction_detail;

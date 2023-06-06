@@ -16,5 +16,17 @@ public class Dao {
 		
 		return data;
 	}
+	
+	public List<Attraction> getSearchCourse(String keyword) {	
+		List<Attraction> data = sess.selectList("getSearchCourse", keyword);
+		
+		return data;
+	}
+	
+	public List<Attraction> getAttractionInfo(String query) {
+		List<Attraction> data = sess.selectList("getAttractionInfo", query);
+		
+		return data;
+	}
 
 }

@@ -1,0 +1,954 @@
+div{
+	box-sizing: border-box;
+}
+
+
+input[type = button]{
+	border:none;
+}
+#section1{
+	background-color:white;
+	width: 1280px;
+	height: 800px;
+	margin: auto;
+	
+}
+#section2{
+	width: 1280px;
+	height: 730px;
+	margin: 20px auto;
+	background-color:white;
+}
+
+#topPic{
+	width: 100%;
+	height: 400px;
+	
+}
+#topContWrap{
+	background-image: url("../image/mainThema.jpg");
+	background-size: cover;
+	background-position: center;
+	width: 1280px;
+	height: 100%;
+	margin: auto;
+}
+#topContWrap > div{
+	position: relative;
+    top: 70px;
+    left: 45px;
+    width: 650px;
+    border-radius: 20px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#userPic{
+	width: 80px;
+    height: 80px;
+    border-radius: 50% 50%;
+    position: relative;
+    top: 20px;
+    left: 30px;
+    border: 0.25px solid white;
+    background-position: center;
+    background-size: cover;
+}
+#userPicReg{
+	position: absolute;
+    margin-left: 33px;
+    margin-top: 30px;
+    width: 75px;
+    height: 25px;
+    color: white;
+    border: 0.25px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+#userIdWrap{
+    position: relative;
+    top: -40px;
+    left: 125px;
+    width: 390px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    color: white;
+}
+#dateRange{
+	position: relative;
+    top: 40px;
+    left: 50px;
+    width: 280px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+#dateRange p{
+	display: inline-block;
+	font-size: 16px;
+	
+}
+#totalDays{
+	width: 100px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    left: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+}
+
+#area{
+	position: absolute;
+    margin-left: 460px;
+    margin-top: -40px;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, -0.5);
+    color: white;
+}
+#area > option{
+	background: #999;
+}
+
+#contentTitle{
+	display: flex;
+    align-items: center;
+    width: 470px;
+    height: 70px;
+    position: relative;
+    top: 20px;
+    left: 50px;
+    color: white;
+    background-color: transparent;
+    font-size: 25px;
+}
+#contentTitle > p{
+	font-size: 30px;
+}
+
+#path{
+	width: 700px;
+	height: 800px;
+	float: left;
+	overflow: auto;
+}
+.style1{
+	width: 100%;
+	height: 145px;
+	overflow: hidden;
+	border: 1px solid #999;
+}
+.style1 > div:first-child{
+	width: 90px;
+    height: 100%;
+    float: left;
+}
+
+.style1 > div:first-child > div{
+	width: 50px;
+    height: 50px;
+    border-radius: 50% 50%;
+    background-color: #223b68;
+    position: relative;
+    top: 14px;
+    left: 17px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.style1 > div:nth-child(2){
+	position: relative;
+	top: 10px;
+	left: 10px;
+	width: 80px;
+	height: 80px;
+	float: left;
+	background-size: cover;
+	background-position: center;
+	
+}
+.style1 > div:nth-child(3){
+	display:flex;
+	align-items:center;
+	position: relative;
+	top: 10px;
+	left: 20px;
+    width: 300px;
+    height: 40px;
+    float: left;;
+    font-size: 17px;
+    font-weight: bold;
+}
+.style1 > div:nth-child(4){
+	position: relative;
+    top: 90px;
+    left: 65px;
+    width: 100px;
+    height: 40px;
+    float: left;
+}
+
+
+.style1 > div:nth-child(4) > input[type=button]{
+	width: 100%;
+	height: 100%;
+	color: white;
+	background-color: #4B89DC;
+	cursor: pointer;
+	margin-left: 50px;
+}
+
+.style1 > div:nth-child(5){
+	float: left;
+    width: 320px;
+    height: 30px;
+    position: relative;
+    left: 20px;
+    top: 10px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #999;
+}
+
+.style1 > div:nth-child(6){
+	position: relative;
+    top: 100px;
+    width: 400px;
+    height: 150px;
+    float: left;
+}
+.style1 > div:nth-child(6) > textarea{
+	width: 100%;
+	height: 100%;
+	resize: none;
+	font-size: 16px;
+}
+
+
+
+
+
+.style1 > input[type=button]:nth-child(7){
+	float: left;
+    position: relative;
+    margin-top: 270px;
+    margin-left: -175px;
+    width: 120px;
+    height: 40px;
+    background-color: #4B89DC;
+    color: white;
+}
+.style1 > input[type=button]:nth-child(8){
+	float: left;
+    position: relative;
+    margin-top: 270px;
+    margin-left: -349px;
+    width: 120px;
+    height: 40px;
+    background-color: #4B89DC;
+    color: white;
+}
+.style1 > div:nth-child(9){
+	position: relative;
+    left: 654px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-image: url(../image/picUpload.png);
+    background-position: center;
+    background-size: cover;
+}
+	
+
+.style2{
+	width: 100%;
+	height: 40px;
+	background-color: #F8F8FA;
+}
+.style2 > div:first-child{
+	height: 70%;
+    width: 30px;
+    position: relative;
+    left: 25px;
+    top: 5px;
+    background-image: url(../image/dot2.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.style2 > div:nth-child(2){
+	position: relative;
+    top: -28px;
+    left: 100px;
+    height: 100%;
+    width: 350px;
+    color: black;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+#maps{
+	width: 580px;
+    height: 800px;
+    float: left;
+    border: 1px solid #999;
+    
+}
+#map{
+	width: 100%;
+	height: 450px;
+}
+#pathserial{
+	width: 100%;
+	height: 350px;
+	border: 1px solid #999;
+}
+#pathserial > div:first-child{
+	width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pathserial > div:nth-child(2){
+	width: 100%;
+    height: 288px;
+    overflow: auto;
+}
+#pathserial > div:first-child  p{
+	font-size: 25px;
+	font-weight: bolder;
+}
+#pathserial > div:nth-child(2) > div{
+	width: 160px;
+    height: 40px;
+    float: left;
+    margin-top: 25px;
+    margin-left: 25px;
+  
+}
+#pathserial > div:nth-child(2) > div >div:first-child{
+	height: 100%;
+	width: 30px;
+	float: left;
+}
+#pathserial > div:nth-child(2) > div > div:nth-child(2){
+	height: 100%;
+	width: 125px;
+	float: left;
+	display: flex;
+	align-items: center;
+}
+#pathserial > div:nth-child(2) > div > div:nth-child(2)>p{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#pathserial > div:nth-child(2) > div >div:first-child  > div{
+    width: 20px;
+    height: 20px;
+    border-radius: 50% 50%;
+    position: relative;
+    top: 9px;
+    left: 3px;
+    background-color: #223b68;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+#WtiteWrap1{
+	width: 700px;
+	height: 600px;
+	float: left;
+}
+#writeTitle{
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#writeContent{
+	width: 680px;
+    height: 524px;
+    resize: none;
+    font-size: 20px;
+    margin-left: 15px;
+    margin-top: 12px;
+}
+#writeTitle >p{
+	font-size: 25px;
+	font-weight: bolder;
+}
+#WtiteWrap2{
+	width: 580px;
+	height: 600px;
+	float: left;
+}
+#repPicWrap{
+	width: 100%;
+	height: 300px;
+}
+
+#repPic{
+	float: left;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 72px;
+    left: 35px;
+    border: 1px solid #999;
+    background-position: center;
+    background-size: cover;
+}
+#contnbutton{
+	position: relative;
+    width: 315px;
+    height: 255px;
+    float: left;
+    left: 60px;
+    top: 35px;
+}
+	
+
+#contnbutton div{
+	margin-top: 10px;
+}
+#contnbutton > div:first-child{
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 25px;
+	font-weight: bolder;
+}
+#contnbutton > div:nth-child(2){
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+}
+
+#contnbutton > div:last-child{
+	width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+#repPicButton{
+	color: white;
+    background-color: #4B89DC;
+    height: 55px;
+    width: 170px;
+    font-size: 15px;
+    cursor: pointer;
+}
+#hashtagWrap{
+	width: 100%;
+	height: 300px;
+}
+
+#hashtagWrap > div:first-child{
+	float: left;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	font-weight: bolder;
+
+}
+
+#hashtagWrap > div:nth-child(2){
+	position: relative;
+    left: 34px;
+    width: 530px;
+    height: 238px;
+    float: left;
+    border: 0.25px solid #999;
+}
+
+#hashtag{
+    border: 0.25px solid;
+    width: 200px;
+    height: 200px;
+}
+
+#tag{
+	position: relative;
+	top: -2px;
+	left: 10px;
+	border: none;
+	width: 100px;
+	height: 20px;
+	font-size: 14px;
+}
+
+#tag:focus{
+	outline:none;
+}
+#tag-list{
+    position: relative;
+
+ 
+
+
+}
+#tag-list li{
+    float: left;
+    list-style-type: none;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #999;
+}
+
+#tag-list li span{
+    position: relative;
+    left:5px;
+    
+}
+
+
+#buttonWrap{
+	margin-top: -130px;
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonStyle1{
+	border: none;
+	width: 150px;
+	height: 40px;
+	background-color:#4B89DC;
+	color: white;
+	position: relative;
+}
+#writeReg{
+	left: 240px;
+}
+#writeCancel{
+	left:-170px
+}
+
+
+
+
+
+
+.modal-backdrop { 
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+	}
+	
+	
+.picModal {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 10000;
+    padding-bottom: 50px;
+    width: 500px;
+    height: 400px;
+}
+
+.conFra{
+	width: 400px;
+	height: 300px;
+}
+.picModalBody{
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	width: 100%;
+	height: 200px;
+	border: 1px solid #999;
+}
+.picModalPicture{
+	width: 100px;
+	height: 100px;
+	border-radius: 50% 50%;
+	border: 1px solid #EBEBEB;
+	background-position: center;
+	background-size: cover;
+}
+.picModalInput{
+	position: absolute;
+    width: 75px;
+    height: 30px;
+    margin-top: 150px;
+    margin-left: 5px;
+}
+
+.picModalBottom{
+	width: 100%;
+	height: 65px;
+	display: flex;
+	justify-content: center;
+}
+.picModalConfirm{
+	margin-top: 20px;
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color:#4B89DC;
+}
+.picModalAdd{
+    width: 50px;
+    height: 25px;
+    color: white;
+    background-color: #4B89DC;
+    position: absolute;
+    margin-left: 585px;
+}
+.picModalCancel{
+	position: absolute;
+    width: 25px;
+    height: 25px;
+    margin-left: 410px;
+    margin-top: -30px;
+    background-position: center;
+    background-size: cover;
+    background-image: url("../image/closeBtn.png");
+    cursor: pointer;
+    
+}
+.picModalCut{
+	margin-top: 20px;
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color:#4B89DC;
+	margin-left: 15px;
+}
+
+
+.spotPicModalFra {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 10000;
+    width: 685px;
+    height: 550px;
+}
+.spotModalClose{
+	width: 15px;
+    height: 15px;
+    position: absolute;
+    margin-left: 630px;
+    margin-top: -490px;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../image/closeBtn.png);
+    cursor: pointer;
+}
+
+
+.spotPicContentFra{
+	width: 100%;
+	height: 470px;
+	border: 2px solid #999;
+}
+.spotPicContent{
+	width: 100%;
+    height: 385px;
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB;
+}
+.spotPicContent > div{
+	width: 200px;
+	height: 150px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	background-position: center;
+	background-size: cover;
+	
+}
+.spotPicContentInput{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputLabel{
+	position: absolute;
+    margin-left: 75px;
+    margin-top: 42px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-image: url("../image/spotPicAdd.png");
+}
+.spotPicBtn{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width: 100%;
+	height: 50px;
+}
+.picModalConfirm2{
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color:#4B89DC;
+	cursor: pointer;
+	
+}
+	
+.spotPicinput{
+	position: absolute;
+    width: 75px;
+    height: 25px;
+    margin-left: 780px;
+}
+
+.modalTitle{
+	width: 100%;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;;
+	
+}
+
+.preview-img {
+  width: 180px;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.picConfirm{
+	display: flex;
+    position: relative;
+    left: 45px;
+    top:-65px;
+    width: 65px;
+    height: 25px;
+    background-color: #829BA6;
+    color: white;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    display: none;
+    float: left;
+}
+
+.imgCut{
+	margin-left: 175px;
+    margin-top: 3px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-size: cover;
+    background-image: url("../image/pictureCut.png");
+    display:none;
+}
+.quantity{
+	font-size: 12px;
+	position: absolute;
+	margin-left: 405px;
+	
+}
+.repmodal{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 10000;
+    width: 685px;
+    height: 800px;
+}
+
+
+.repPicCont{
+	width: 100%;
+	height: 100%;
+}
+
+.repPicTitle{
+	width: 100%;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.repPicSubTitle{
+	width: 100%;
+    height: 45px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.repBody{
+	width: 100%;
+	height: 600px;
+	border: 2px solid #999;
+	overflow: auto;
+}
+
+.repBottom{
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 60px;	
+}
+.repConfirmBtn{
+	width: 100px;
+	height: 30px;
+	background-color: #4B89DC;
+	border: none;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	
+}
+.repCancelBtn{
+	width: 100px;
+	height: 30px;
+	background-color: #4B89DC;
+	border: none;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	margin-left: 50px;
+	
+}
+.selectPicList{
+    float: left;
+    width: 195px;
+    height: 195px;
+    margin-top: 5px;
+    margin-left: 10px;
+    background-position: center;
+    background-size: cover;
+}
+
+		
+
+#modalCont  div{
+	border: 0.25px solid;
+	position: absolute;
+	margin-left: 200px;
+	
+}
+#madalPicFra{
+	width: 100%;
+	height: 330px;
+	border: 0.25px solid #EBEBEB;
+	overflow: auto;
+}
+
+#madalPicFra > div{
+	width: 180px;
+	height: 160px;
+	float: left;
+	margin-left: 13px;
+	margin-top: 20px;
+	object-fit: cover;
+	
+}
+
+#madalPicFra > div >div{
+	position: relative;
+    width: 15px;
+    height: 15px;
+    left: 163px;
+    background-color: white;
+    background-image: url(../image/pictureCut.png);
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    display: none;
+    
+}
+
+#modal input[type=button]{
+	border: none;
+	width: 100px;
+	height: 30px;
+	background-color: #4B89DC;
+	color: white;
+	font-size: 14px;
+	font-weight: bolder;
+	cursor: pointer;
+}
+#modal input[type=file]:nth-child(2){
+    height: 25px;
+    font-size: 11px;
+}
+#modalCont > div:nth-child(2){
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+
+
+.preview-img {
+  width: 180px;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+

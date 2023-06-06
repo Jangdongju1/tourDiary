@@ -5,5 +5,13 @@
 	 	select * from attraction
 	</select>
 	
+	<select id="getSearchCourse" parameterType="String" resultType="model.Attraction">
+		 select * from attraction where site_1 like CONCAT('%', #{value}, '%') or attraction_Name like CONCAT('%', #{value}, '%')
+	</select>
+	
+	<select id="getAttractionInfo" parameterType="String" resultType="model.Attraction">
+		SELECT * FROM attraction WHERE attraction_Num IN ${value}
+	</select>
+	
 	
 </mapper>

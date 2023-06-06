@@ -86,7 +86,7 @@
 					</div>
 	
 				</div>
-				<input type="button" name="tour_plan" id="tour_plan" value="Diary작성하러가기" onclick="location.href='getcourses'"  >
+				<input type="button" name="tour_plan" id="tour_plan" value="Diary작성하러가기" onclick="location.href='getcourses'">
 
 		</div>
 

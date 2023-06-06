@@ -11,15 +11,16 @@ import dao.Dao;
 import model.Attraction;
 
 @Service
-public class GetCourse {
-	@Autowired Dao getCourseInfo;
-	
-	public String getCourseinfo() {
-		List<Attraction> data = getCourseInfo.getCourse();
-		// 리스트 형태의 데이터를 Json 형태로 문자화 한다. 
+public class MapSearch {
+	@Autowired Dao search;	
+	public String searchData(String keyword) {
+		List<Attraction> data = search.getSearchCourse(keyword);
+
 		Gson json = new Gson();
-		String jsonList = json.toJson(data);
-		return jsonList;
+		String jsonData = json.toJson(data);
+		
+		
+		return jsonData;
 	}
 
 }
