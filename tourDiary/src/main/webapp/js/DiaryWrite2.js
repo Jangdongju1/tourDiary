@@ -515,7 +515,7 @@ $(function () {
     	}
     
     
-    	console.log("최종적으로 선택한 그림의 name : "+ $("#repPicObj").val());
+    	//console.log("최종적으로 선택한 그림의 name : "+ $("#repPicObj").val());
     	
     	
        $("#writeData").submit();

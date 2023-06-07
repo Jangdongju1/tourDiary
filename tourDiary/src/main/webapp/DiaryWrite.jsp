@@ -35,7 +35,7 @@
 <%@ page import="model.Attraction"%>
 <%@ page import="java.util.List" %>
 <%@ page import="model.CombinedLists" %>
-<%@ page import="java.util.Base64"%>>
+<%@ page import="java.util.Base64"%>
 
 
 <%	
@@ -89,7 +89,7 @@
 
 
 <input type="hidden" id="encodedData" value="<%= encodedData%>">
-<form id="writeData" action="write.diary" method="Post" enctype="multipart/form-data" accept-charset="UTF-8">
+<form id="writeData" action="regDiary" method="Post" enctype="multipart/form-data" accept-charset="UTF-8">
 	<%request.setCharacterEncoding("UTF-8");%>
 	<input type="hidden" id="hashTag" name="hashTag" value="">
 	<input type="hidden" id= "memo" name="memo">
