@@ -2,16 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dataprocess">
 	<select id="getCourse" resultType="model.Attraction">
-	 	select * from attraction
+	 	SELECT * FROM attraction
 	</select>
 	
 	<select id="getSearchCourse" parameterType="String" resultType="model.Attraction">
-		 select * from attraction where site_1 like CONCAT('%', #{value}, '%') or attraction_Name like CONCAT('%', #{value}, '%')
+		 SELECT * FROM attraction WHERE site_1 like CONCAT('%', #{value}, '%') or attraction_Name like CONCAT('%', #{value}, '%')
 	</select>
 	
 	<select id="getAttractionInfo" parameterType="String" resultType="model.Attraction">
 		SELECT * FROM attraction WHERE attraction_Num IN ${value}
 	</select>
+	
+	<insert id="insertTextData" parameterType="model.DiaryWriter">
+		INSERT INTO tourdiary (
+			user_Id, 
+        	post_Title, 
+        	post_Body,  
+        	readCount,
+        	post_Like, 
+        	hashTag, 
+        	start_Date, 
+        	total_Date, 
+        	end_Date, 
+        	area, 
+        	user_Pic,
+        	rep_Pic
+        	)
+        	VALUES(
+        	#{user_Id},
+        	#{post_Title},
+        	#{post_Body},
+        	#{readCount},
+        	#{post_Like},
+        	#{hashTag},
+        	#{start_date},
+        	#{total_date},
+        	#{end_date},
+        	#{area},
+        	#{userPic},
+        	#{repPic}
+        	)
+	</insert>
 	
 	
 </mapper>

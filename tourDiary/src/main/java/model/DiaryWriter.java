@@ -1,8 +1,13 @@
 package model;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+
+@Component
+@ComponentScan("model")
 public class DiaryWriter {
 	private int post_Num, readCount, post_Like;    
-	private String user_Id, post_Date, post_Title, post_Body, post_Img, hashTag, area, userPic, repPic;
+	private String user_Id, post_Date, post_Title, post_Body, hashTag, area, userPic, repPic;
 	
 
 
@@ -106,14 +111,6 @@ public class DiaryWriter {
 
 	public void setPost_Body(String post_Body) {
 		this.post_Body = post_Body;
-	}
-
-	public String getPost_Img() {
-		return post_Img;
-	}
-
-	public void setPost_Img(String post_Img) {
-		this.post_Img = post_Img;
 	}
 
 	public String getHashTag() {

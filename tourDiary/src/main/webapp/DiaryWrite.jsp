@@ -93,10 +93,10 @@
 	<%request.setCharacterEncoding("UTF-8");%>
 	<input type="hidden" id="hashTag" name="hashTag" value="">
 	<input type="hidden" id= "memo" name="memo">
-	<input type="hidden" id= "attraction_Num" name="attraction_Num">
-	<input type="hidden" id= "depart_Date" name="depart_Date" value="<%= startDate%>">
-	<input type="hidden" id= "end_Date" name="end_Date" value="<%= endDate%>">
-	<input type="hidden" id= "total_Date" name="total_Date" value="<%= totalDate%>">
+	<input type="hidden" id= "attraction_Num" name="attractionNum">
+	<input type="hidden" id= "depart_Date" name="departDate" value="<%= startDate%>">
+	<input type="hidden" id= "end_Date" name="endDate" value="<%= endDate%>">
+	<input type="hidden" id= "total_Date" name="totalDate" value="<%= totalDate%>">
 	<input type="hidden" name="id" value="<%= id%>>">
 	<input type="hidden" name="repPic" id="repPicObj">
 	

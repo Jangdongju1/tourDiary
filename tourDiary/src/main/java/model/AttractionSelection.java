@@ -1,8 +1,14 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AttractionSelection {
-	private int select_Num , post_Num, attraction_Num;
+	private int select_Num , post_Num;
 	private String memo, spotPic;
+	
+	@JsonProperty("attraction_num")
+	private int attraction_Num;
+	
 	public int getSelect_Num() {
 		return select_Num;
 	}

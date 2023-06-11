@@ -1,50 +1,230 @@
 package service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dao.Dao;
+import factory.AttractionSelectionFactory;
+import factory.StringBuliderFactory;
+import model.AttractionSelection;
+import model.DiaryWriter;
+
 @Service
 public class RegDiary {
+	@Autowired DiaryWriter diaryContent;
+	@Autowired ResourceLoader userPicResourceLoader;
+	@Autowired ResourceLoader coursePicResourceLoader;
+	@Autowired LinkedHashSet<Integer> uniqueModalNum;
+	@Autowired HashMap<String, String> coursePicKeyVal;
+	@Autowired ArrayList<Integer> coursePicKey;
+	@Autowired ArrayList<String> coursePicValue;
+	@Autowired StringBuliderFactory coursePicBuilder;
+	@Autowired AttractionSelectionFactory userUpload;
+	@Autowired ArrayList<AttractionSelection> uploadDataList;
+	@Autowired StringBuliderFactory hashDataBuild;
+	@Autowired Dao insertTextData;
+	
+	
+	private final ObjectMapper objectMapper;
+	private static final String UPLOAD_DIRECTORY = "upload/picture";
+	
+	public RegDiary() {
+		this.objectMapper = new ObjectMapper();
+	}
+	
+	public RegDiary (ObjectMapper objectMapper) {
+		this.objectMapper = objectMapper;
+	}
+	
 	public void insertDiary(HttpServletRequest request) {
 		
 		
+		DiaryWriter[] hashData = null;
+		AttractionSelection[] memoData = null;
+		AttractionSelection[] attractionNum = null;
+		String repPic = null;
+		Enumeration<String> parameterNames = request.getParameterNames();
+	    while (parameterNames.hasMoreElements()) {
+	    	String key = parameterNames.nextElement();
+	    	if(key.equals("contentTitle")) {
+	    		diaryContent.setPost_Title(request.getParameter(key));
+	    	}else if(key.equals("id")){
+	    		diaryContent.setUser_Id(request.getParameter(key));
+	    		
+	    	}else if(key.equals("area")){
+	    		diaryContent.setArea(request.getParameter(key));
+	    	}else if(key.equals("writeContent")) {
+	    		diaryContent.setPost_Body(request.getParameter(key));
+	    	
+	    	}else if(key.equals("departDate")) {
+	    		diaryContent.setStart_date(request.getParameter(key));
+	    	
+	    	}else if(key.equals("endDate")) {
+	    		diaryContent.setEnd_date(request.getParameter(key));
+	    	
+	    	}else if(key.equals("totalDate")) {
+	    		diaryContent.setTotal_date(Integer.parseInt(request.getParameter(key)));
+	    	
+	    	}else if(key.equals("repPic")) {
+	    		repPic = request.getParameter(key);
+	    	
+	    	}else if(key.equals("hashTag")){
+	    		String hashTag = request.getParameter(key);
+	    		if(!hashTag.equals("") && !hashTag.equals(null)) {
+	    			try {
+	    				hashData = objectMapper.readValue(hashTag, DiaryWriter[].class);
+	    				StringBuilder hashDataBuilder = hashDataBuild.stringBuilderFactory();
+	    				for(int i=0 ; i<hashData.length ; i++) {
+	    					hashDataBuilder.append(hashData[i].getHashTag()).append("/");
+	    				}
+	    				diaryContent.setHashTag(hashDataBuilder.toString());
 		
-		if(request instanceof MultipartHttpServletRequest) {
-			System.out.println("멀티파트부분");
-			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
-			MultiValueMap<String, MultipartFile> fileMap = multipartRequest.getMultiFileMap();
-			
-	
-			for(String key : fileMap.keySet()) {
-				List<MultipartFile> files = fileMap.get(key);
-			}
-			
-			if(fileMap.isEmpty()) {
-				Enumeration<String> paramaterNames = request.getParameterNames();
-				
-				while (paramaterNames.hasMoreElements()) {
-					String key = (String) paramaterNames.nextElement();
-					
-					if(key.equals("contentTitle")) {
-						// 작업.
+					} catch (JsonProcessingException e) {
+						e.printStackTrace();
 					}
-					
+	    		}
+	    	
+	    	}else if(key.equals("memo")) {
+	    		String memo = request.getParameter(key);
+	    		try {
+	    			if(!memo.equals("") && !memo.equals(null)) {
+	    				memoData = objectMapper.readValue(memo, AttractionSelection[].class);
+	    			
+	    			}
+				} catch (JsonProcessingException e) {
+					e.printStackTrace();
+				}
+	    	}else if(key.equals("attractionNum")) {
+	    		String attractionNumber = request.getParameter("attractionNum");
+	    		try {
+	    			attractionNum = objectMapper.readValue(attractionNumber, AttractionSelection[].class);
+	    			
+				} catch (JsonProcessingException e) {
+					e.printStackTrace();
+				}
+	    	}
+	    }	    
+		int modalLength = 0; 
+		
+		if (request instanceof MultipartHttpServletRequest) {
+		    MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		    MultiValueMap<String, MultipartFile> fileMap = multipartRequest.getMultiFileMap();
+		        
+		    if (!fileMap.isEmpty()) {
+		        for (String key : fileMap.keySet()) {
+		            List<MultipartFile> files = fileMap.get(key);
+		            
+		            for (MultipartFile file : files) {
+		                String originFileName = file.getOriginalFilename();
+		                
+		                if (originFileName != null && !originFileName.isEmpty()) {
+		                    if(key.equals("userPic")) {
+		                    	String originaluserPicName = file.getOriginalFilename();	
+		                    	String fileExtension = originaluserPicName.substring(originaluserPicName.lastIndexOf("."));
+		                    	String newFileName = UUID.randomUUID().toString()+fileExtension;
+		                    	
+		                    	diaryContent.setUserPic(newFileName);
+		                    	
+		                    	Resource resource = userPicResourceLoader.getResource(UPLOAD_DIRECTORY);
+		                    	try {
+									Path uploadPath = resource.getFile().toPath();
+									if(!Files.exists(uploadPath)) {
+										Files.createDirectories(uploadPath);
+									}
+									Path filePath = uploadPath.resolve(newFileName);
+									Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}	
+		                    }else {
+		                    	String fileKey = file.getName();
+		                    	String modalNum = fileKey.split("-")[0];
+		                    	coursePicKey.add(Integer.parseInt(modalNum));
+		                    	uniqueModalNum.add(Integer.parseInt(modalNum));
+		                   
+		                    	
+		                    	String originalPicName = file.getOriginalFilename();	
+		                    	String fileExtension = originalPicName.substring(originalPicName.lastIndexOf("."));
+		                    	String newFileName = UUID.randomUUID().toString() + fileExtension;
+		                    	coursePicValue.add(newFileName);
+		                    	coursePicKeyVal.put(fileKey, originalPicName);	
+		                    	Resource resource = coursePicResourceLoader.getResource(UPLOAD_DIRECTORY);
+		                    	
+		                    	try {
+									Path uploadPath = resource.getFile().toPath();
+									if(!Files.exists(uploadPath)) {
+										Files.createDirectories(uploadPath);
+									}
+									Path filePath = uploadPath.resolve(newFileName);
+									Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}	
+		                    }
+		                }
+		            }
+		        }
+		    }
+		    modalLength = uniqueModalNum.size();
+		} 
+		diaryContent.setRepPic(coursePicKeyVal.get(repPic));
+		
+		// 모달에 대한 고유번호의 배열 
+		int[] modalUniqueNumArr = new int[modalLength];
+		int index = 0;
+		for(int modalNum : uniqueModalNum) {
+			modalUniqueNumArr[index] = modalNum;
+			index++;
+		}
+		// 스트링빌더 객체의 동적생성 factory패키지 내부 틀래스 이용.
+		StringBuilder[] cousePictures  = new StringBuilder[modalLength];
+		for(int i=0; i<modalLength ;i++ ) {
+			cousePictures[i] = coursePicBuilder.stringBuilderFactory();
+		}
+		
+		for(int i=0; i<coursePicKey.size();i++) {
+			for(int j=0;j<modalUniqueNumArr.length;j++) {
+				if(modalUniqueNumArr[j] == coursePicKey.get(i)) {
+					cousePictures[j].append(coursePicValue.get(i)).append("/");
 				}
 				
 			}
-				
-			
-			
 		}
 		
-	
+		AttractionSelection[] uploadData = new  AttractionSelection[attractionNum.length];
+		for(int i=0; i<attractionNum.length; i++) {
+			uploadData[i] = userUpload.attractionSelcetionFactory();
+			uploadData[i].setAttraction_Num(attractionNum[i].getAttraction_Num());
+			uploadData[i].setMemo(memoData[i].getMemo());
+			/*if(modalLength !=0) {
+				uploadData[i].setSpotPic(cousePictures[i].toString());
+			}*/
+			
+			uploadDataList.add(uploadData[i]);
+		}
+		insertTextData.insertUserWrite(diaryContent);
+		
 		
 	}
 

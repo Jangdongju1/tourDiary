@@ -2,7 +2,6 @@ package model;
 
 public class Attraction {
 	
-	
 	private String attraction_name;
 	private String attraction_addr;
 	private String site_1;

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.Attraction;
+import model.DiaryWriter;
 
 @Repository
 public class Dao {
@@ -27,6 +28,11 @@ public class Dao {
 		List<Attraction> data = sess.selectList("getAttractionInfo", query);
 		
 		return data;
+	}
+	
+	public void insertUserWrite(DiaryWriter textData) {
+		int test = sess.insert("insertTextData", textData);
+		System.out.println(test);
 	}
 
 }
