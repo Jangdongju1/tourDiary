@@ -54,5 +54,22 @@ public class Dao {
 		
 		return success;
 	}
-
+	
+	public List<DiaryWriter> getTextContent(int postNum) {
+		List<DiaryWriter> textData = sess.selectList("getTextData", postNum);
+		
+		return textData;
+	}
+	
+	public List<AttractionSelection> getUploadContent(int post_Num) {
+		List<AttractionSelection> uploadData = sess.selectList("getUploadData", post_Num);
+		
+		return uploadData;
+	}
+	
+	public List<Attraction> getAttractionContent(int[] attractionNum) {
+		List<Attraction> attractionData = sess.selectList("getAttractionData", attractionNum);
+		
+		return attractionData;
+	}
 }

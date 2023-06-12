@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dataprocess">
+	
+	<resultMap type="model.DiaryWriter" id="DiaryWriterResultMap">
+		<result property="userPic" column="user_Pic"/>
+		<result property="repPic" column="rep_Pic"/>
+	</resultMap>
+	
 	<select id="getCourse" resultType="model.Attraction">
 	 	SELECT * FROM attraction
 	</select>
@@ -65,6 +71,21 @@
 			)
 		</foreach>
 	</insert>
+	
+	<select id="getTextData" parameterType="int" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
+		SELECT * FROM tourdiary WHERE post_Num = ${value}
+	</select>
+	
+	<select id="getUploadData" parameterType="int" resultType="model.AttractionSelection">
+		SELECT * FROM attraction_selection WHERE post_Num = ${value}
+	</select>
+	
+	<select id="getAttractionData" parameterType="int[]" resultType="model.Attraction">
+		SELECT * FROM attraction WHERE attraction_Num IN
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
 	
 	
 </mapper>

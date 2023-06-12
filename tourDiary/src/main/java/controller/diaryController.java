@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import model.CombinedLists;
 import service.GetAttraction;
 import service.GetCourse;
+import service.GetDiaryData;
 import service.MapSearch;
 import service.RegDiary;
 
@@ -21,6 +22,7 @@ public class diaryController {
 	@Autowired MapSearch searchData;
 	@Autowired GetAttraction getAttraction;
 	@Autowired RegDiary regDiary;
+	@Autowired GetDiaryData getDiary; 
 	
 	@RequestMapping(value = "getcourses", method = RequestMethod.GET)
 	public String getCourse(HttpServletRequest request) {
@@ -59,8 +61,10 @@ public class diaryController {
 	}
 	
 	@RequestMapping(value = "getDiaryData", method = RequestMethod.GET)
-	public void getDiaryData(@RequestParam("post_Num") int postNum) {
+	public String getDiaryData(@RequestParam("post_Num") int postNum, HttpServletRequest request) {
+		getDiary.getDiaryData(postNum, request);
 		
+		return "DiaryView.jsp";
 	}
 	
 }
