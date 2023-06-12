@@ -17,7 +17,7 @@ import service.MapSearch;
 import service.RegDiary;
 
 @Controller
-public class diaryController {
+public class DiaryController {
 	@Autowired GetCourse getCourse;
 	@Autowired MapSearch searchData;
 	@Autowired GetAttraction getAttraction;
