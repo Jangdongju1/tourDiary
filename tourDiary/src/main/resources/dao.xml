@@ -44,5 +44,27 @@
         	)
 	</insert>
 	
+	<select id="getMaxIndex" resultType="Integer">
+		 SELECT IFNULL(MAX(post_Num),0) FROM tourdiary
+	</select>
+	
+	<insert id="insertUserUpload" parameterType="java.util.List">
+		INSERT INTO attraction_selection (
+			post_Num,
+			attraction_Num,
+			memo,
+			spot_Pics
+		)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+			#{item.post_Num},
+			#{item.attraction_Num},
+			#{item.memo},
+			#{item.spotPic}
+			)
+		</foreach>
+	</insert>
+	
 	
 </mapper>

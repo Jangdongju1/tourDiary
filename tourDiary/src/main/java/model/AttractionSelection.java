@@ -2,6 +2,7 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class AttractionSelection {
 	private int select_Num , post_Num;
 	private String memo, spotPic;

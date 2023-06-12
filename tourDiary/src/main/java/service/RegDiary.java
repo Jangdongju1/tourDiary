@@ -44,8 +44,10 @@ public class RegDiary {
 	@Autowired ArrayList<AttractionSelection> uploadDataList;
 	@Autowired StringBuliderFactory hashDataBuild;
 	@Autowired Dao insertTextData;
+	@Autowired Dao maxIndex;
+	@Autowired Dao insertFileUpload;
 	
-	
+	// 유저가 입력한 TEXT데이터와  업로드한 사진 파일에 대한 데이터 가공 및 저장처리.
 	private final ObjectMapper objectMapper;
 	private static final String UPLOAD_DIRECTORY = "upload/picture";
 	
@@ -57,7 +59,7 @@ public class RegDiary {
 		this.objectMapper = objectMapper;
 	}
 	
-	public void insertDiary(HttpServletRequest request) {
+	public boolean insertDiary(HttpServletRequest request) {
 		
 		
 		DiaryWriter[] hashData = null;
@@ -168,7 +170,7 @@ public class RegDiary {
 		                    	String fileExtension = originalPicName.substring(originalPicName.lastIndexOf("."));
 		                    	String newFileName = UUID.randomUUID().toString() + fileExtension;
 		                    	coursePicValue.add(newFileName);
-		                    	coursePicKeyVal.put(fileKey, originalPicName);	
+		                    	coursePicKeyVal.put(fileKey, newFileName);	
 		                    	Resource resource = coursePicResourceLoader.getResource(UPLOAD_DIRECTORY);
 		                    	
 		                    	try {
@@ -217,15 +219,46 @@ public class RegDiary {
 			uploadData[i] = userUpload.attractionSelcetionFactory();
 			uploadData[i].setAttraction_Num(attractionNum[i].getAttraction_Num());
 			uploadData[i].setMemo(memoData[i].getMemo());
-			/*if(modalLength !=0) {
-				uploadData[i].setSpotPic(cousePictures[i].toString());
-			}*/
-			
 			uploadDataList.add(uploadData[i]);
 		}
+		
+		if(modalLength != 0) {
+			for(int i=0; i<modalUniqueNumArr.length;i++) {
+				for(int j=0; j<uploadDataList.size();j++) {
+					if(modalUniqueNumArr[i]==j) {
+						uploadDataList.get(j).setSpotPic(cousePictures[i].toString());
+					}
+				}
+			}
+			
+		}
+		
+		// 유저가입력한 TEXT데이터, 대표사진, 유저사진 등의 파일 업로드에 대한 insert
+		// 또한 upload데이터의 insert시 필요한 post_Num를 추출하여 uploadData가 담긴 List에 add해줌.
 		insertTextData.insertUserWrite(diaryContent);
+		int uploadIndex = maxIndex.getMaxIndex();
+		
+		for(int i=0 ; i<uploadDataList.size(); i++) {
+			uploadDataList.get(i).setPost_Num(uploadIndex);
+		}
+		
+		int batchSize = 10;
+		int dataSize = uploadDataList.size();
+		int batchCount = ((batchSize+dataSize)-1)/batchSize;  
+		boolean success = false;
+		for(int i=0 ; i<batchCount; i++) {
+			int from = i*batchSize;
+			int to = Math.min((i+1)*batchSize, dataSize);
+			
+			List<AttractionSelection> subList = uploadDataList.subList(from, to);
+			
+			success = insertFileUpload.insertUserUpload(subList);
+		}
+		
+		request.setAttribute("post_Num", uploadIndex);
 		
 		
+		return success; 
 	}
 
 }

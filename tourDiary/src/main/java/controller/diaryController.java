@@ -1,16 +1,13 @@
 package controller;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import model.CombinedLists;
 import service.GetAttraction;
@@ -50,8 +47,19 @@ public class diaryController {
 	}
 
 	@RequestMapping(value = "regDiary", method = RequestMethod.POST)
-	public void diaryReg(HttpServletRequest request) {
-		regDiary.insertDiary(request);
+	public String diaryReg(HttpServletRequest request) {
+		boolean success = regDiary.insertDiary(request);
+		
+		if(success) {
+			return "DiaryDataProcess.jsp";
+		}else {
+			return ""; // insert 실패시 보여줄 페이지.
+		}
+		
+	}
+	
+	@RequestMapping(value = "getDiaryData", method = RequestMethod.GET)
+	public void getDiaryData(@RequestParam("post_Num") int postNum) {
 		
 	}
 	
