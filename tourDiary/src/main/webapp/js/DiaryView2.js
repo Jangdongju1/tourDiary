@@ -1,6 +1,8 @@
 $(function () {// UI 관련 JS코드 
 	const spotPics = decodeURIComponent(document.getElementById("spotPics").value);// 선택한 사진의 요수
 	const spotPicsArr = JSON.parse(spotPics);   // 선택한 명소에 대한 사진 업로드 데이터  명소번호 : 사진배열 /로 구분
+	const UPLOADPATH = document.getElementById("path").value;
+	
 	
 	
     
@@ -26,7 +28,7 @@ $(function () {// UI 관련 JS코드
 	
 	for(let i=0 ; i<filterdArr.length; i++){   // 배열에 담긴 사진의 수만큼 엘리먼트를 생성하고 사진을 뿌려준다. 
 		for(let j=0 ; j<filterdArr[i].length; j++){
-			let picUrl = "http://localhost:8081/diaryFunction/upload/picture/"+ filterdArr[i][j].replace(/\+/g, "%20");
+			let picUrl = UPLOADPATH+"/upload/picture/"+ filterdArr[i][j].replace(/\+/g, "%20");
 			$("#photoWrap").append($("<div>").css("background-image", "url("+picUrl+")"));
 		}
 		
@@ -75,7 +77,7 @@ $(function () {// UI 관련 JS코드
 		
 		if(filterdArr2[(index-1)].length != 0){
 			for(let i = 0; i < filterdArr2[(index-1)].length ; i++){
-				let url =  "http://localhost:8081/diaryFunction/upload/picture/"+filterdArr2[(index-1)][i].replace(/\+/g, "%20")
+				let url =  UPLOADPATH+"/upload/picture/"+filterdArr2[(index-1)][i].replace(/\+/g, "%20")
 				let spotPic = $("<div>").addClass("spotPicture").css("background-image", "url("+url+")")
 				$("[data-index=" + (index-1) + "]").children().find(".modalBody").append(spotPic);
 					

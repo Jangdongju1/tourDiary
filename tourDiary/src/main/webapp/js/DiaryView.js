@@ -4,7 +4,6 @@ const hashVal = decodeURIComponent(document.getElementById("hash").value);
 
 
 
-
 const spotJson = JSON.parse(spotVal);
 const hashJson = JSON.parse(hashVal);
 

@@ -51,7 +51,7 @@
 	List<Attraction> attractionDataList = (List<Attraction>)request.getAttribute("attractionData");	
 	DiaryWriter textData =  textDataList.get(0);
 	final String UPLOADPATH =  request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-	System.out.println(UPLOADPATH);
+	
 	
 	
 	int attlength = attractionDataList.size();  // 선택한 명소리스트의 길이 
@@ -144,7 +144,6 @@
 	uploadData.setLength(uploadData.length()-1);// 역시나 맨 뒷글자 자르기 
 	uploadData.append("]");
 	
-	System.out.println(uploadData.toString());
 	
 	String spotPicsEncode = URLEncoder.encode(uploadData.toString(), "UTf-8"); // JSON데이터를 hidden으로 넘길때 깨지지 않도록 하는 부분.
 
@@ -153,9 +152,9 @@
 <input type="hidden" id="spot" value="<%= spotEncode%>">
 <input type="hidden" id="hash" value="<%= hashEncode%>">
 <input type="hidden" id="spotPics" value="<%= spotPicsEncode%>">
-<input type="hidden" id="path" value="<%= UPLOADPATH%>>">
+<input type="hidden" id="path" value="<%= UPLOADPATH%>">
 
-<form  action="initCont.diary" method="Post">
+<form  action="getInitContent" method="Post">
 	
 	
 	<div id="topPic">

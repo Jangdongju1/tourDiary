@@ -97,7 +97,7 @@
 	<input type="hidden" id= "depart_Date" name="departDate" value="<%= startDate%>">
 	<input type="hidden" id= "end_Date" name="endDate" value="<%= endDate%>">
 	<input type="hidden" id= "total_Date" name="totalDate" value="<%= totalDate%>">
-	<input type="hidden" name="id" value="<%= id%>>">
+	<input type="hidden" name="id" value="<%= id%>">
 	<input type="hidden" name="repPic" id="repPicObj">
 	
 

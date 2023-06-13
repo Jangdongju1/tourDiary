@@ -1,18 +1,25 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.CombinedLists;
+import model.DiaryWriter;
+import model.Search;
+import service.GETAreaContentTotal;
 import service.GetAttraction;
 import service.GetCourse;
 import service.GetDiaryData;
+import service.GetInitContent;
 import service.MapSearch;
 import service.RegDiary;
 
@@ -22,9 +29,11 @@ public class DiaryController {
 	@Autowired MapSearch searchData;
 	@Autowired GetAttraction getAttraction;
 	@Autowired RegDiary regDiary;
-	@Autowired GetDiaryData getDiary; 
+	@Autowired GetDiaryData getDiary;
+	@Autowired GetInitContent getContent;
+	@Autowired GETAreaContentTotal getTotalContent;
 	
-	@RequestMapping(value = "getcourses", method = RequestMethod.GET)
+	@RequestMapping(value = "getCourses", method = RequestMethod.GET)
 	public String getCourse(HttpServletRequest request) {
 		String data = getCourse.getCourseinfo();
 		request.setAttribute("courseData", data);
@@ -65,6 +74,20 @@ public class DiaryController {
 		getDiary.getDiaryData(postNum, request);
 		
 		return "DiaryView.jsp";
+	}
+	
+	@RequestMapping(value = "getInitContent", method = RequestMethod.POST)
+	public String getInitContent(HttpServletRequest request) {
+		getContent.getInitContent(request);
+		
+		return "TotalContents.jsp";
+	}
+	@RequestMapping(value = "area/total", method = RequestMethod.POST, consumes = "application/json")
+	@ResponseBody
+	public String getTotalContent(@RequestBody Search serchParam) {
+		String jsonData = getTotalContent.getAreaContentTotal(serchParam);
+		
+		return jsonData;
 	}
 	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import model.Attraction;
 import model.AttractionSelection;
 import model.DiaryWriter;
+import model.Search;
 
 @Repository
 public class Dao {
@@ -71,5 +72,17 @@ public class Dao {
 		List<Attraction> attractionData = sess.selectList("getAttractionData", attractionNum);
 		
 		return attractionData;
+	}
+	
+	public List<DiaryWriter> getInitContent() {
+		List<DiaryWriter> data = sess.selectList("getInitContent");
+		
+		return data;
+	}
+	
+	public List<DiaryWriter> getTotalAreaContent(Search serchParam) {
+		List<DiaryWriter> data = sess.selectList("getTotalAreaContent", serchParam);
+		
+		return data;
 	}
 }

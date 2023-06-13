@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+ul{
+	list-style-type: none;
+}
+li{
+	float: left;
+}
+div{
+	box-sizing: border-box;
+
+}
+
+section{
+	border: 0.25px solid;
+	
+}
+body{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+#section1{
+	margin: auto;
+	width: 100%;
+	height: 150px;
+	background-color: white;
+	z-index: 999;
+	position: fixed;
+}
+#section2{
+	width: 1280px;
+	height: 1600px;
+	margin: auto;
+	position: relative;
+	top: 150px;
+}
+#logoWarp{
+	position: absolute;
+	margin-top:10px;
+	margin-left:10px;
+    width: 280px;
+    height: 90px;
+
+}
+#logo{
+	float:left;
+	width: 105px;
+	height: 100%;
+	background-image: url("../image/logo_blue_diary.png");
+	background-size: cover;
+	background-position: center;
+}
+#name{
+	float:left;
+	width: 170px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	font-weight: bolder;
+}
+
+#searchWrap{
+	width: 1280px;
+	height: 100%;
+	margin: auto;
+}
+#searchBarWrap{
+	position:relative;
+	top:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 500px;
+    height: 60px;
+}
+	
+
+#searchBar{
+	width: 400px;
+	height: 30px;
+	border: 0.25px solid #999;
+	border-radius: 20px 0 0 20px;
+}
+
+#searchBtn{
+	width: 60px;
+	height: 31px;
+	border: 0.25px solid #999;
+	border-radius: 0 20px 20px 0;
+	cursor: pointer;
+	
+	
+	
+}
+#searchBtn > div{
+	position:relative;
+	left:15px;
+	top:5px;
+	width: 20px;
+	height: 20px;
+	background-image: url("../image/search_icon_diary.png");
+	background-size: cover;
+	background-position: center;
+}
+#searchOp{
+	position: absolute;
+    margin-top: 40px;
+    margin-left: 290px;
+    width: 780px;
+    height: 35px;
+}
+#searchOp ul> li{
+	width:70px;
+	height: 100%;
+	text-align: center;
+	margin-left: 25px;
+	line-height: 30px;
+	border-radius: 5px;
+	font-size: 15px;
+}
+.btnClick{
+	background-color:#000042;
+	color: white;
+	
+}
+.btnNomal{
+	background-color: #EBEBEB;
+	color: black;
+	
+}
+#diaryCont{
+	width: 1200px;
+	height: 100%;
+	margin: auto;
+}
+
+
+#diaryCont > ul{
+    float: left;
+    margin-left:40px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+#diaryCont>ul >li{
+	float: left;
+	width: 240px;
+	height: 330px;
+	margin-top: 25px;
+	overflow: hidden;
+	border: 2px solid #E0E0E0;
+	border-radius: 8px;
+	}
+
+#diaryCont>ul >li > div{
+	width: 100%;
+	height: 50%;
+	position: relative;
+	box-sizing: border-box;
+	}
+
+#diaryCont > ul li>div:last-child{
+	z-index: 900;
+	height: 70%;
+	background-color: white;
+	}
+#diaryCont > ul li>div:first-child{
+	background-position: center center;
+	background-size: cover;
+	}
+.circle{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	position: relative;
+	left: 80px;
+	top: -43px;
+	background-position: center center;
+	background-size: cover;
+	}
+.diaryText{
+	width: 240px;
+	height: 190px;
+	box-sizing: border-box;
+	position: relative;
+	top: -40px;
+	}
+.diaryText > ul >li{
+	overflow: hidden;
+}
+.diaryText ul > li:first-child{
+	position: relative;
+	left:20px;
+	width: 200px;
+	height: 20px;
+	text-align: center;
+	font-size: 14px;
+	color: #999;
+
+}
+.diaryText ul > li:nth-child(2){
+	position: relative;
+	left:20px;
+	top: 20px;
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bolder;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+}
+.diaryText> ul > li:last-child{
+	width: 195px;
+	height: 75px;
+	font-size: 14px;
+	position: relative;
+	left:20px;
+	top: 28px;
+}
+#nextEle{
+	position: relative;
+	top: 150px;
+}

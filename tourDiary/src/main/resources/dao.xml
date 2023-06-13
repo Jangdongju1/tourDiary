@@ -7,6 +7,10 @@
 		<result property="repPic" column="rep_Pic"/>
 	</resultMap>
 	
+	<resultMap type="model.AttractionSelection" id="AttractionSelectionResultMap">
+		<result property="spotPic" column="spot_Pics"/>
+	</resultMap>
+	
 	<select id="getCourse" resultType="model.Attraction">
 	 	SELECT * FROM attraction
 	</select>
@@ -76,7 +80,7 @@
 		SELECT * FROM tourdiary WHERE post_Num = ${value}
 	</select>
 	
-	<select id="getUploadData" parameterType="int" resultType="model.AttractionSelection">
+	<select id="getUploadData" parameterType="int" resultType="model.AttractionSelection" resultMap="AttractionSelectionResultMap">
 		SELECT * FROM attraction_selection WHERE post_Num = ${value}
 	</select>
 	
@@ -85,6 +89,14 @@
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
+	</select>
+	
+	<select id="getInitContent" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
+		select post_Num, user_Id, post_Title, post_Body, user_Pic, rep_Pic from tourdiary order by post_Date desc limit 0,16
+	</select>
+	
+	<select id="getTotalAreaContent" parameterType="model.Search" resultType="model.DiaryWriter">
+		SELECT * FROM tourdiary order by post_Date desc limit #{page},#{max}
 	</select>
 	
 	
