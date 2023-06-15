@@ -27,19 +27,12 @@ $(function(){
 
 	
 
-
 	$("input[type=button]").mouseenter(function(){  // 상단 사각형 버튼 호버효과 
 		$(this).css("background-color", "black");
 	});
 	$("input[type=button]").mouseleave(function(){
 		$(this).css("background-color", "#333");	
 	});
-
-
-	
-
-
-
 
 	});
 
@@ -62,10 +55,6 @@ $(function(){
 
 
 });
-
-
-
-
 
 
 
@@ -126,8 +115,8 @@ $(function(){
 		);
 
 		 setTimeout(function(){prot = 0;}, 500);
-
-	
+		 
+		
 	});
 		
 
@@ -164,10 +153,22 @@ $(function(){
 			auto_slide = setInterval(interval,5000);
 
 		});
-
-
-
+		
+		 $("#title_wrap > strong:last-child").mouseenter(function() {
+			 $(this).css({
+				 "text-decoration" : "underline",
+				 "text-underline-position" : "under"	
+				 });
+		})
+		
+		$("#title_wrap > strong:last-child").mouseleave(function() {
+			 $(this).css({
+				 "text-decoration" : "",
+				 "text-underline-position" : ""	
+				 });
 		});
+		
+});
 
 var didScroll; 
 var delta = 5; // 이벤트가 발생했을때 이전과 현재 스크롤의 위치 차이를 비교하기 위한 변수

@@ -154,7 +154,7 @@
 <input type="hidden" id="spotPics" value="<%= spotPicsEncode%>">
 <input type="hidden" id="path" value="<%= UPLOADPATH%>">
 
-<form  action="getInitContent" method="Post">
+<form  action="getInitContent" method="GET">
 	
 	
 	<div id="topPic">

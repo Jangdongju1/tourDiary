@@ -95,8 +95,30 @@
 		select post_Num, user_Id, post_Title, post_Body, user_Pic, rep_Pic from tourdiary order by post_Date desc limit 0,16
 	</select>
 	
-	<select id="getTotalAreaContent" parameterType="model.Search" resultType="model.DiaryWriter">
+	<select id="getTotalAreaContent" parameterType="model.Search" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
 		SELECT * FROM tourdiary order by post_Date desc limit #{page},#{max}
+	</select>
+	
+	<select id="getAreaContent" parameterType="model.Search" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
+		SELECT * FROM tourdiary WHERE area = #{area} order by post_Date desc limit #{page},#{max}
+	</select>
+	
+	<select id="getKeywordSearchContent" parameterType="model.Search" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
+		SELECT * FROM tourdiary WHERE
+		post_Title LIKE CONCAT('%',#{searchKeyword},'%') OR 
+		hashTag LIKE CONCAT('%',#{searchKeyword},'%')
+		ORDER BY post_Date DESC 
+		LIMIT #{page}, #{max}
+		
+	</select>
+	<select id="getKeywordSearchAreaContent" parameterType="model.Search" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
+		SELECT * FROM tourdiary WHERE
+		area = #{area} AND (
+		post_Title LIKE CONCAT('%',#{searchKeyword},'%') OR 
+		hashTag LIKE CONCAT('%',#{searchKeyword},'%')
+		)
+		ORDER BY post_Date DESC 
+		LIMIT #{page}, #{max}
 	</select>
 	
 	

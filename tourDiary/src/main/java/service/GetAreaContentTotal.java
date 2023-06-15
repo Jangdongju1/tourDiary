@@ -12,16 +12,14 @@ import model.DiaryWriter;
 import model.Search;
 
 @Service
-public class GETAreaContentTotal {
+public class GetAreaContentTotal {
 	@Autowired Dao getContent;
 	@Autowired Gson totalAreaJson;
-	public String getAreaContentTotal(Search serchParam) {
-		int start = (serchParam.getPage()-1)*16; 
-		serchParam.setPage(start);
-		List<DiaryWriter> totalArea = getContent.getTotalAreaContent(serchParam);
-		String jsonData = totalAreaJson.toJson(totalArea);
-		
-		return jsonData;
+	public String getAreaContentTotal(Search searchParam) {
+		List<DiaryWriter> totalArea = getContent.getTotalAreaContent(searchParam);
+		String totalData = totalAreaJson.toJson(totalArea);
+			
+		return totalData;
 	}
 
 }

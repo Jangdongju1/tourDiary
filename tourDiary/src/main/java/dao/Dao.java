@@ -80,9 +80,26 @@ public class Dao {
 		return data;
 	}
 	
-	public List<DiaryWriter> getTotalAreaContent(Search serchParam) {
-		List<DiaryWriter> data = sess.selectList("getTotalAreaContent", serchParam);
+	public List<DiaryWriter> getTotalAreaContent(Search searchParam) {
+		List<DiaryWriter> data = sess.selectList("getTotalAreaContent", searchParam);
 		
 		return data;
+	}
+	
+	public List<DiaryWriter> getAreaContent(Search searchParam) {
+		List<DiaryWriter> data = sess.selectList("getAreaContent", searchParam);
+		
+		return data;
+	}
+	public List<DiaryWriter> getSearchContent(Search searchParam) {
+		String xmlId ="";
+		if(searchParam.getArea().equals("total")) {
+			xmlId = "getKeywordSearchContent";
+		}else {
+			xmlId = "getKeywordSearchAreaContent";
+		}
+		List<DiaryWriter> data = sess.selectList(xmlId, searchParam);
+		
+		return data; 
 	}
 }

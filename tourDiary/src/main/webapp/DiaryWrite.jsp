@@ -112,12 +112,12 @@
 				<div id="totalDays"><%= totalDate-1%>박 <%= totalDate%>일</div>
 				<select id="area" name="area">
 					<option selected="selected" hidden="hidden" disabled="disabled">-지역선택-</option>
-					<option value="se">서울경기</option>
-					<option value="ka">강원도</option>
-					<option value="ch">충청도</option>
-					<option value="ky">경상도</option>
-					<option value="ju">전라도</option>
-					<option value="je">제주도</option>
+					<option value="seoul">서울경기</option>
+					<option value="gangwon">강원도</option>
+					<option value="chungcheong">충청도</option>
+					<option value="gyeonsang">경상도</option>
+					<option value="jeolla">전라도</option>
+					<option value="jeju">제주도</option>
 				</select>
 			</div>
 		</div>

@@ -14,6 +14,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
+	<%
+	  final String UPLOADPATH = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+	%>
+	<input type="hidden" id="path" value="<%= UPLOADPATH%>">
 
 <body>
 	<form>
@@ -52,7 +56,6 @@
 			<%@ page import="model.DiaryWriter"%>
 				<%
 					List<DiaryWriter> data = (List<DiaryWriter>)request.getAttribute("initData");
-					final String UPLOADPATH =  request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 				
 		 	 		for(int i=0; i<data.size(); i++){  // 초기 16개의 데이터 
 						out.println("<ul onclick =location.href='getDiaryData?post_Num="+data.get(i).getPost_Num()+"'>");

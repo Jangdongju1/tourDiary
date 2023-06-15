@@ -1,0 +1,517 @@
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+	
+	*
+	{
+		margin: 0px;
+		padding: 0px;
+	}
+	ol, ul, li
+	{
+		list-style-type: none;
+	}
+	a
+	{
+		text-decoration: none;
+		color: #333;
+	}
+	body{
+		font-size: 12px;
+		background-color: #E2E2E2;
+	}
+
+	section{
+		width: 1280px;
+		height: 1000px;
+		margin: auto;
+	}
+
+	table{
+		width: 450px;
+		height: 360px;
+		margin: auto;
+		position: relative;
+		left: -150px;
+		top: 35px;
+	}
+	label{
+		display: block;
+	}
+	input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
+  		-webkit-appearance: none;
+	}
+
+	.outBox{
+		max-width:405px; 
+		border-radius: 6px
+	}
+	.outBox2{
+		max-width:200px; 
+		border-radius: 6px;
+		display: inline-block;
+		box-sizing: border-box;
+	}
+	.outBox3{
+		max-width: 400px; 
+		border-radius: 6px;
+		display: inline-block;
+		box-sizing: border-box;
+	}
+	.outBox4{
+		max-width: 400px; 
+		border-radius: 6px;
+		display: inline-block;
+		box-sizing: border-box;
+	}
+	.outBox .inputBox { 
+		position:relative; 
+		height: 40px;
+		box-sizing: border-box;
+	}
+	.outBox2 .inputBox { 
+		position:relative; 
+		width: 198px;
+		height: 40px 
+	}
+	.outBox3 .inputBox { 
+		position:relative; 
+		max-width: 400px;
+		height: 40px 
+	}
+	.outBox4 .inputBox { 
+		position:relative; 
+		max-width: 400px;
+		height: 40px 
+	}
+
+	.outBox .inputBox input[type="text"]{
+		padding: 0 10px; 
+		width: 100%; 
+		height: 40px; 
+		font-size: 14px; 
+		box-sizing: border-box; 
+		border: 2px solid #999; 
+		outline: none;
+		border-radius: 5px;
+	}
+	.outBox2 .inputBox .input_style2 {
+		padding: 0 10px; 
+		width: 100%; 
+		height: 40px; 
+		font-size: 14px; 
+		box-sizing: border-box; 
+		border: 2px solid #999; 
+		outline: none;
+	}
+	.outBox3 .inputBox input[type="tel"] {
+ 		padding: 0 10px;
+		width: 99%; 
+		height: 40px; 
+		font-size: 14px; 
+		box-sizing: border-box; 
+		border: 2px solid #999; 
+		outline: none;
+		border-radius: 5px;
+	}
+	.outBox3 .inputBox input[type="text"] {
+ 		padding: 0 10px;
+		width: 99%; 
+		height: 40px; 
+		font-size: 14px; 
+		box-sizing: border-box; 
+		border: 2px solid #999; 
+		outline: none;
+		border-radius: 5px;
+	}
+	.outBox4 .inputBox input[type="text"] {
+		padding: 0 10px;
+		width: 99%; 
+		height: 40px; 
+		font-size: 14px; 
+		box-sizing: border-box; 
+		border: 2px solid #999; 
+		outline: none;
+		border-radius: 5px;
+	}
+
+	
+
+	.outBox .inputBox input[type="text"]:focus {
+		border:2px solid darkblue	;
+	}
+	.outBox2 .inputBox .input_style2:focus {
+		border:2px solid darkblue;
+	}
+	.outBox3 .inputBox input[type="tel"]:focus {
+		border:2px solid darkblue;
+	}
+	
+	.outBox3 .inputBox input[type="text"]:focus {
+		border:2px solid darkblue;
+	}
+	.outBox4 .inputBox input[type="text"]:focus {
+		border:2px solid darkblue;
+	}
+
+
+	.outBox .inputBox input[type="text"].error-border {
+		border:2px solid red	;
+	}
+	.outBox2 .inputBox .input_style2.error-border {
+		border:2px solid red;
+	}
+	.outBox3 .inputBox input[type="tel"].error-border {
+		border:2px solid red;
+	}
+	.outBox3 .inputBox input[type="text"].error-border {
+		border:2px solid red;
+	}
+	.outBox4 .inputBox input[type="text"].error-border{
+		border:2px solid red;
+	}
+
+	
+	
+
+
+	.outBox .inputBox input[type="text"]:focus + label {
+		color:red; 
+		font-size:12px; 
+		transform:translate(5px, -38px);
+	}
+	.outBox2 .inputBox .input_style2:focus + label {
+		color:red; 
+		font-size:12px; 
+		transform:translate(5px, -38px);
+	}
+	.outBox3 .inputBox input[type=tel]:focus + label {
+		color:red; 
+		font-size:12px; 
+		transform:translate(5px, -38px);
+	}
+	.outBox3 .inputBox input[type=text]:focus + label {
+		color:red; 
+		font-size:12px; 
+		transform:translate(5px, -38px);
+	}
+	.outBox4 .inputBox input[type=text]:focus + label {
+		color:red; 
+		font-size:12px; 
+		transform:translate(5px, -38px);
+	}
+
+
+
+
+	.outBox .inputBox label {
+		transition:all .2s; 
+		pointer-events:none; 
+		position:absolute; left:0; 
+		bottom:-6px; 
+		padding:0 6px; 
+		color:#999; 
+		font-size:14px; 
+		font-weight:normal; 
+		background:#fff; 
+		transform:translate(2px, -18px);
+	}
+	.outBox2 .inputBox label {
+		transition:all .2s; 
+		pointer-events:none; 
+		position:absolute; left:0; 
+		bottom:-6px; 
+		padding:0 6px; 
+		color:#999; 
+		font-size:14px; 
+		font-weight:normal; 
+		background:#fff; 
+		transform:translate(2px, -18px);
+	}
+	.outBox3 .inputBox label {
+		transition:all .2s; 
+		pointer-events:none; 
+		position:absolute; left:0; 
+		bottom:-6px; 
+		padding:0 6px; 
+		color:#999; 
+		font-size:14px; 
+		font-weight:normal; 
+		background:#fff; 
+		transform:translate(2px, -18px);
+	}
+	.outBox4 .inputBox label {
+		transition:all .2s; 
+		pointer-events:none; 
+		position:absolute; left:0; 
+		bottom:-6px; 
+		padding:0 6px; 
+		color:#999; 
+		font-size:14px; 
+		font-weight:normal; 
+		background:#fff; 
+		transform:translate(2px, -18px);
+	}
+
+
+
+
+
+
+	.outBox .inputBox input[type=text].has-value + label
+	{
+		color:black; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+		.outBox .inputBox input[type=text].error-value + label
+	{
+		color:red; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	
+	.outBox2 .inputBox .input_style2.has-value + label
+	{
+		color:black; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	.outBox2 .inputBox .input_style2.error-value + label
+	{
+		color:red; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	.outBox3 .inputBox input[type=tel].has-value + label
+	{
+		color:black; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	.outBox3 .inputBox input[type=text].has-value + label
+	{
+		color:black; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	.outBox3 .inputBox input[type=tel].error-value + label
+	{
+		color:red; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	
+	.outBox3 .inputBox input[type=text].error-value + label
+	{
+		color:red; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+
+	.outBox4 .inputBox input[type=text].has-value + label
+	{
+		color:black; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	.outBox4 .inputBox input[type=text].error-value + label
+	{
+		color:red; 
+		transform:scale(.85) 
+		translate(-10px, -48px);
+	}
+	
+
+
+
+
+	#signup1{
+		position: relative;
+		z-index: 990;
+		opacity: 1;
+	}
+	#signup2{
+		position: relative;
+		top: -390px;
+		opacity: 0;
+	}
+	#signup2 tr td{
+	}
+	#signup2 tr>td {
+		height: 50px;
+	}
+	#signup2 >tr:nth-child(3) td{
+		height: 80px;
+	}
+
+
+	.total_frame{
+		width: 750px;
+	    height: 650px;
+	    margin: 200px auto;
+	    border-radius: 15px;
+	    padding: 40px 40px 40px;
+	    background-color: white;
+	    border: 1px solid black;
+	}
+
+	.input_style2{
+		width: 196px;
+		height: 37px;
+		border: 1px solid #E0E0E0;
+		border-radius: 5px;
+
+	}
+	
+	.select_style{
+		width: 120px;
+		height: 40px;
+		border: 1px solid #E0E0E0;
+		border-radius: 5px;
+	}
+	
+	#intro{
+		color: #003580;
+		font-family: 'Noto Sans KR', sans-serif;
+		width: 300px;
+		height: 60px;
+		font-size: 30px;
+		padding: 10px 0 0 ;
+		margin-top: 30px;
+	}
+	#next_step{
+		cursor: pointer;
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: 20px;
+		width: 110px;
+    	height: 40px;
+    	border-radius: 5px;
+    	border: none;
+    	background-color: #006CFA;
+    	color: white;
+    	position: relative;
+    	top: 150px;
+    	left: 350px;
+    	z-index: 999;
+   
+	}
+	#pass_text{
+		position: relative;
+		top: 10px;
+	}
+	
+	#icon{
+		position: absolute;
+    	width: 280px;
+    	height: 300px;
+    	margin-left: 470px;
+    	margin-top: 10px;
+    	padding: 10px 0 0;
+	}
+
+	#intro2{
+		width: 300px;
+		height: 20px;
+		font-size: 20px;
+		padding: 10px 0 0 ;
+		margin-top: 50px;
+	}
+	#confirm{
+		cursor: pointer;
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: 16px;
+		width: 90px;
+    	height: 45px;
+    	border-radius: 5px;
+    	border: none;
+    	background-color: #006CFA;
+    	color: white;
+    	position: relative;
+    	top: 150px;
+    	left: 256px;
+    	opacity: 0;
+    	z-index: 890;
+	}
+	#back{
+		cursor: pointer;
+		width: 90px;
+    	height: 45px;
+    	background-color: white;
+    	border: none;
+    	color: black;
+    	position: relative;
+    	top: 150px;
+    	left: -194px;
+    	z-index: 900;
+    	font-size: 16px;
+    	font-weight: bold;
+    	opacity: 0;
+	}
+
+	#email_second{
+		width: 112px;
+		height: 40px;
+		border: 1px solid #E0E0E0;
+		border-radius: 5px;
+	}
+	
+	#addr_search{
+		cursor: pointer;
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: 16px;
+		width: 90px;
+		height: 40px;
+		border-radius: 5px;
+		border: none;
+		background-color: #006CFA;
+		color: white;
+		position: relative;
+		left: 20px;
+		top:1px;
+	}
+	
+	#post_num{
+		width: 400px;
+		height: 34px;
+		border: 1px solid #E0E0E0;
+		border-radius: 5px;
+		position:relative;
+		pointer-events:none; 
+
+	}
+	#emailVal{
+		border: 2px solid #999;
+		border-radius: 5px;
+		position: relative;
+		height: 37px;
+	}
+	#hpCheckBtn{
+		font-family: 'Noto Sans KR', sans-serif;
+		border-radius: 5px;
+	    border: none;
+	    background-color: #006CFA;
+	    color: white;
+	    height: 40px;
+	    width: 75px;
+	    font-size: 16px;
+	    cursor: pointer;	
+	}
+	#hpCheckBtn2{
+		position: relative;
+		top: 2px;
+		font-family: 'Noto Sans KR', sans-serif;
+		border-radius: 5px;
+	    border: none;
+	    background-color: #006CFA;
+	    color: white;
+	    height: 40px;
+	    width: 75px;
+	    font-size: 16px;
+	   	cursor: pointer;
+	}
+	#hpCheckInput{
+    	width: 325px;
+    	border-radius: 6px;
+    	box-sizing: border-box;
+    	border: 2px solid #999;
+    	height: 40px;
+	}

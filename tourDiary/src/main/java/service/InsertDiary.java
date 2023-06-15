@@ -31,7 +31,7 @@ import model.AttractionSelection;
 import model.DiaryWriter;
 
 @Service
-public class RegDiary {
+public class InsertDiary {
 	@Autowired DiaryWriter diaryContent;
 	@Autowired ResourceLoader userPicResourceLoader;
 	@Autowired ResourceLoader coursePicResourceLoader;
@@ -51,11 +51,11 @@ public class RegDiary {
 	private final ObjectMapper objectMapper;
 	private static final String UPLOAD_DIRECTORY = "upload/picture";
 	
-	public RegDiary() {
+	public InsertDiary() {
 		this.objectMapper = new ObjectMapper();
 	}
 	
-	public RegDiary (ObjectMapper objectMapper) {
+	public InsertDiary (ObjectMapper objectMapper) {
 		this.objectMapper = objectMapper;
 	}
 	

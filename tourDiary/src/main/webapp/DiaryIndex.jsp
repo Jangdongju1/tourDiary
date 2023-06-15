@@ -45,18 +45,7 @@
 		<strong id="commTitle2">Community</strong> -->
 	</div>
 </div>
-		<div id="top_nav">
-			<div id="top_navFra">
-				<ul class="tab-bar">
-					<li data-num="1" class="tab wave dark">여행Diary</li>
-					<li data-num="2" class="tab wave dark">자유게시판</li>
-					<li data-num="3" class="tab wave dark">리뷰</li>
-					<li data-num="4" class="tab wave dark">1:1 문의</li>
-					<!-- <li data-num="5" class="tab wave dark">약관 및 정책</li> -->
-				</ul>
 
-		</div>
-	</div>
 	<div id="topConetentFra">
 		<div id="topContent">
 			<div id="top_image">
@@ -97,7 +86,9 @@
 
 			<div id="bestDiaryFra">
 					<div id="title_wrap">
-				<strong>베스트 Diary <span id="icon3"><img src="image/best.png"></span></strong>
+						<strong>베스트 Diary <span id="icon3"><img src="image/best.png"></span></strong>
+						<strong onclick="location.href='getInitContent'">더보기</strong>
+					</div>
 				<ul id="bestDiary">
 					<li>
 						<div style="background-image: url(image/jeju.jpg);"></div>
@@ -212,7 +203,6 @@
 
 				</ul>
 				
-		</div>
 				
 			</div>
 

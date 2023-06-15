@@ -2,7 +2,7 @@ package model;
 
 public class Search {
 	int page, max; 
-	String search, area;
+	String searchKeyword, area;
 	public int getPage() {
 		return page;
 	}
@@ -15,11 +15,12 @@ public class Search {
 	public void setMax(int max) {
 		this.max = max;
 	}
-	public String getSearch() {
-		return search;
+	
+	public String getSearchKeyword() {
+		return searchKeyword;
 	}
-	public void setSearch(String search) {
-		this.search = search;
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 	public String getArea() {
 		return area;
