@@ -237,23 +237,15 @@ public class InsertDiary {
 		// 또한 upload데이터의 insert시 필요한 post_Num를 추출하여 uploadData가 담긴 List에 add해줌.
 		insertTextData.insertUserWrite(diaryContent);
 		int uploadIndex = maxIndex.getMaxIndex();
-		
-		for(int i=0 ; i<uploadDataList.size(); i++) {
+		for(int i=0 ;i<uploadDataList.size();i++) {
 			uploadDataList.get(i).setPost_Num(uploadIndex);
 		}
 		
-		int batchSize = 10;
-		int dataSize = uploadDataList.size();
-		int batchCount = ((batchSize+dataSize)-1)/batchSize;  
-		boolean success = false;
-		for(int i=0 ; i<batchCount; i++) {
-			int from = i*batchSize;
-			int to = Math.min((i+1)*batchSize, dataSize);
-			
-			List<AttractionSelection> subList = uploadDataList.subList(from, to);
-			
-			success = insertFileUpload.insertUserUpload(subList);
-		}
+		
+		
+		boolean success = insertFileUpload.insertUserUpload(uploadDataList);
+		
+		
 		
 		request.setAttribute("post_Num", uploadIndex);
 		
