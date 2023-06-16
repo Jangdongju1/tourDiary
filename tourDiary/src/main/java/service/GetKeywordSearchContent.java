@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import dao.Dao;
+import dao.DiaryDao;
 import model.DiaryWriter;
 import model.Search;
 
 @Service
 public class GetKeywordSearchContent {
-	@Autowired Dao getContent;
+	@Autowired DiaryDao getContent;
 	@Autowired Gson jsonParse;
 	public String getKeywordSearchContent(Search searchParam) {
 		List<DiaryWriter> data = getContent.getSearchContent(searchParam);

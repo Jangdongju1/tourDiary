@@ -484,34 +484,4 @@
 		position: relative;
 		height: 37px;
 	}
-	#hpCheckBtn{
-		font-family: 'Noto Sans KR', sans-serif;
-		border-radius: 5px;
-	    border: none;
-	    background-color: #006CFA;
-	    color: white;
-	    height: 40px;
-	    width: 75px;
-	    font-size: 16px;
-	    cursor: pointer;	
-	}
-	#hpCheckBtn2{
-		position: relative;
-		top: 2px;
-		font-family: 'Noto Sans KR', sans-serif;
-		border-radius: 5px;
-	    border: none;
-	    background-color: #006CFA;
-	    color: white;
-	    height: 40px;
-	    width: 75px;
-	    font-size: 16px;
-	   	cursor: pointer;
-	}
-	#hpCheckInput{
-    	width: 325px;
-    	border-radius: 6px;
-    	box-sizing: border-box;
-    	border: 2px solid #999;
-    	height: 40px;
-	}
+	

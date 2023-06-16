@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import dao.Dao;
+import dao.DiaryDao;
 import model.Attraction;
 
 @Service
 public class GetCourse {
-	@Autowired Dao getCourseInfo;
+	@Autowired DiaryDao getCourseInfo;
 	
 	public String getCourseinfo() {
 		List<Attraction> data = getCourseInfo.getCourse();

@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import dao.Dao;
+import dao.DiaryDao;
 import model.DiaryWriter;
 import model.Search;
 
 @Service
 public class GetAreaContentTotal {
-	@Autowired Dao getContent;
+	@Autowired DiaryDao getContent;
 	@Autowired Gson totalAreaJson;
 	public String getAreaContentTotal(Search searchParam) {
 		List<DiaryWriter> totalArea = getContent.getTotalAreaContent(searchParam);

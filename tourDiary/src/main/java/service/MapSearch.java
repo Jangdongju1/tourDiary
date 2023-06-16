@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import dao.Dao;
+import dao.DiaryDao;
 import model.Attraction;
 
 @Service
 public class MapSearch {
-	@Autowired Dao search;	
+	@Autowired DiaryDao search;	
 	public String searchData(String keyword) {
 		List<Attraction> data = search.getSearchCourse(keyword);
 

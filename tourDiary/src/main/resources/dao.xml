@@ -91,6 +91,12 @@
 		</foreach>
 	</select>
 	
+	<select id="increaseViewCount" parameterType="int">
+		UPDATE tourdiary 
+		SET readCount = readCount+1
+		WHERE post_Num = ${value}
+	</select>
+	
 	<select id="getInitContent" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
 		select post_Num, user_Id, post_Title, post_Body, user_Pic, rep_Pic from tourdiary order by post_Date desc limit 0,16
 	</select>
@@ -111,6 +117,7 @@
 		LIMIT #{page}, #{max}
 		
 	</select>
+	
 	<select id="getKeywordSearchAreaContent" parameterType="model.Search" resultType="model.DiaryWriter" resultMap="DiaryWriterResultMap">
 		SELECT * FROM tourdiary WHERE
 		area = #{area} AND (
@@ -119,6 +126,53 @@
 		)
 		ORDER BY post_Date DESC 
 		LIMIT #{page}, #{max}
+	</select>
+	
+	<select id="idCheck" parameterType="model.User" resultType="int">
+		SELECT COUNT(userId) FROM signup WHERE userId = #{userId}
+	</select>
+	
+	<select id="nickNameCheck" parameterType="model.User" resultType="int">
+		SELECT COUNT(nickName) FROM signup WHERE nickName = #{nickName}
+	</select>
+	
+	<select id="insertUserData" parameterType="model.User" resultType="int">
+		INSERT INTO signup (
+			userId,
+			password,
+			userName,
+			nickName,
+			birthYear,
+			birthMonth,
+			birthDay,
+			gender,
+			hp1,
+			hp2,
+			email,
+			postNum,
+			address,
+			detail
+			)
+			Values(
+			#{userId},
+			#{password},
+			#{userName},
+			#{nickName},
+			#{birthYear},
+			#{birthMonth},
+			#{birthDay},
+			#{gender},
+			#{hp1},
+			#{hp2},
+			#{email},
+			#{postNum},
+			#{address},
+			#{detail}
+			)
+	</select>
+	
+	<select id="loginProcess" parameterType="model.User" resultType="model.User">
+		SELECT userId, password FROM signup WHERE userId = #{userId}
 	</select>
 	
 	

@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.Dao;
+import dao.DiaryDao;
 import model.DiaryWriter;
 
 @Service
 public class GetInitContent {
-	@Autowired Dao getContent;
+	@Autowired DiaryDao getContent;
 	public void getInitContent(HttpServletRequest request) {
 		List<DiaryWriter> data = getContent.getInitContent();
 		

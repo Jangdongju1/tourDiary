@@ -21,7 +21,8 @@
 
 	<%
 		request.setCharacterEncoding("utf-8");
-		String id = (String)session.getAttribute("id");
+		String id = request.getParameter("userId");
+		session.setAttribute("id", id);
 	%>
 	<%
 		if(id == null) {

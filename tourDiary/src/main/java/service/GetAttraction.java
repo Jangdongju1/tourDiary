@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dao.Dao;
+import dao.DiaryDao;
 import model.Attraction;
 import model.CombinedLists;
 import model.DiaryWriter;
@@ -30,7 +30,7 @@ public class GetAttraction {
 			
 	}
 	 
-	@Autowired Dao getInfo;
+	@Autowired DiaryDao getInfo;
 	@Autowired CombinedLists lists;
 	public CombinedLists getInfo(String jsonData){
 		List<Attraction> pickNum = null;

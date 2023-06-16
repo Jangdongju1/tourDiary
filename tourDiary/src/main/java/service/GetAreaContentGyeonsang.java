@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import dao.Dao;
+import dao.DiaryDao;
 import model.DiaryWriter;
 import model.Search;
 
 @Service
 public class GetAreaContentGyeonsang {
-	@Autowired Dao getContent;
+	@Autowired DiaryDao getContent;
 	@Autowired Gson jsonParse;
 	public String getAreaContentGyeonsang(Search searchParam) {
 		List<DiaryWriter> data = getContent.getAreaContent(searchParam);

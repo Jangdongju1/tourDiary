@@ -12,7 +12,7 @@ import model.DiaryWriter;
 import model.Search;
 
 @Repository
-public class Dao {
+public class DiaryDao {
 	@Autowired SqlSession sess;
 	@Autowired SqlSession getMaxIndex;
 	public List<Attraction> getCourse() {
@@ -72,6 +72,11 @@ public class Dao {
 		List<Attraction> attractionData = sess.selectList("getAttractionData", attractionNum);
 		
 		return attractionData;
+	}
+	
+	
+	public void increaseViewCount(int postNum) {
+		sess.update("increaseViewCount", postNum);
 	}
 	
 	public List<DiaryWriter> getInitContent() {

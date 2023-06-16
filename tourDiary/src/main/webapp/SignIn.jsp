@@ -15,10 +15,10 @@
 <body>
 	<section>
 		<div id="logo_wrap">
-			<a href="Main_Index.jsp"><img src="image\logo.png"></a>
+			<img src="image\logo.png">
 		</div>
 		<div id="form_wrap">
-			<form name="user_info" action="dbprocess/login_process.jsp" onsubmit="return check()" method="post">
+			<form name="user_info">
 				<h1>Login</h1>
 				<label style="color: slateblue;">StayWhale에 오신걸 환영합니다.</label>
 				<input type="text" id="id" name="user_id" class="textfield" placeholder="UserID">
@@ -27,8 +27,8 @@
 					<input type="checkbox" id="login_check" class="cbox">
 					<label style="cursor: pointer;" for="login_check">로그인 상태 유지</label><br>
 				</div>
-				<button type="submit" id="lbtn" class="custom-btn btn-5">로그인</button>
-				<a href="Sign_Up.jsp"><p class="sign_up">회원가입</p></a>
+				<button type="button" id="lbtn" class="custom-btn btn-5" onclick="login()">로그인</button>
+				<a href="SignUp.jsp"><p class="sign_up">회원가입</p></a>
 				<a href=""><p class="id_search">아이디 찾기</p></a>
 				<a href=""><p class="pass_search">비밀번호 찾기</p></a>
 			</form>

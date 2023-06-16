@@ -1,10 +1,10 @@
 $(function(){
     // 회원가입 1단계 2단계 왔다갔다~~
 $("#next_step").click(function(){
-		var errorLabel = $("#id_error, #pass_error,#name_error,#nickname_error");
-		var arr = new Array();
+		let errorLabel = $("#id_error, #pass_error,#name_error,#nickname_error");
+		let arr = new Array();
 
-		for (var i = 0 ; i<errorLabel.length;i++){
+		for (let i = 0 ; i<errorLabel.length;i++){
 			arr[i] = errorLabel.eq(i).html();
 		} 
 
@@ -52,10 +52,10 @@ $("#next_step").click(function(){
 
 
 function idCheck(){   // 아이디의 패턴을 파악하는 조건식
-	var idPattern = /^[a-z0-9]{5,20}$/i;
-	var idInput = $("#id");
-	var id_Error = $("#id_error");
-	var inputBox = $("#id");
+	let idPattern = /^[a-z0-9]{5,20}$/i;
+	let idInput = $("#id");
+	let id_Error = $("#id_error");
+	let inputBox = $("#id");
 
 	if(idPattern.test(idInput.val()) == false){
 
@@ -78,14 +78,18 @@ function idCheck(){   // 아이디의 패턴을 파악하는 조건식
 
 $(function(){
 	$("#id").change(function(){     // ajax 중복검사 메소드
-		var userId = $("#id").val();
+		let userId = $("#id").val();
+		let info = {"userId" : userId}
 		$.ajax({
-			url : "dbprocess/id_Check.jsp",
+			url : "idCheck",
 			type : "POST",
-			datatype : "html",
-			data : {"id" : userId},
+			datatype : "json",
+			contentType: "application/json",
+			data : JSON.stringify(info),
 			success : function(data){
-				if(data == 1){
+				let result = JSON.parse(data).success;
+
+				if(result === "false"){
 					$("#id_error").html("아이디가 중복되었습니다.");
 					$("#id").addClass("error-border");
 				}
@@ -95,14 +99,18 @@ $(function(){
 	});
 	
 	$("#nickname").change(function(){     // 닉네임 중복검사.
-		var userNick = $("#nickname").val();
+		let userNick = $("#nickname").val();
+		let info = {"nickName" : userNick};
+		
 		$.ajax({
-			url : "dbprocess/nick_Check.jsp",
+			url : "nickNameCheck",
 			type : "POST",
-			datatype : "html",
-			data : {"nick" : userNick},
+			datatype : "json",
+			contentType : "application/json",
+			data : JSON.stringify(info),
 			success : function(data){
-				if(data == 1){
+				let result = JSON.parse(data).success;
+				if(result === "false"){
 					$("#nickname_error").html("닉네임이 중복되었습니다.");
 					$("#nickname").addClass("error-border");
 				}
@@ -120,10 +128,10 @@ $(function(){
 
 
 function pwCheck(){
-	var pwPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]).{8,16}$/;
-	var pass = $(".input_style2");
-	var pwError = $("#pass_error");
-	var inputBox = $("#pass, #pass_con");
+	let pwPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]).{8,16}$/;
+	let pass = $(".input_style2");
+	let pwError = $("#pass_error");
+	let inputBox = $("#pass, #pass_con");
 
 	if(pwPattern.test(pass.eq(0).val())==false ){
 		pwError.html("8~16자 영문 대,소문자, 숫자, 특수문자를 사용하세요.");
@@ -147,24 +155,25 @@ function pwCheck(){
 }
 
 function checkBox(){    // 비밀번호 보기   주의할 점은 타입이 변경되는 것이기 때문에 select 할때 절때로 타입으로 해서는 아니된다. !!(오류가 발생한다.)
-	var passText = $("#passText").prop("checked");
-	var passInput =document.getElementsByName("pass");
+	let passText = $("#passText").prop("checked");
+	let passInput =document.getElementById("pass");
+	let passConfirm = document.getElementById("pass_con");
 	if(passText  == true){
-		for(var i = 0 ; i<passInput.length ; i++){
-			passInput[i].setAttribute("type", "text" );
-		}
+		passInput.setAttribute("type", "text" );
+		passConfirm.setAttribute("type", "text" );
+		
 	}else{
-		for(var j = 0 ; j<passInput.length ; j++){
-			passInput[j].setAttribute("type", "password" );
-		}
+		passInput.setAttribute("type", "password" );
+		passConfirm.setAttribute("type", "password" );
+		
 	}
 }
 
 
 function nameCheck(){
-	var errorLabel = $("#name_error");
-	var userName = $("#name");
-	var Pattern = /^[\uAC00-\uD7A3]{2,5}$/;
+	let errorLabel = $("#name_error");
+	let userName = $("#name");
+	let Pattern = /^[\uAC00-\uD7A3]{2,5}$/;
 	
 	console.log(userName.val());
 	
@@ -179,8 +188,8 @@ function nameCheck(){
 }
 
 function nicknameCheck (){
-	var userNick= $("#nickname").val();
-	var Pattern = /^[a-zA-Z0-9가-힣]{4,20}$/;
+	let userNick= $("#nickname").val();
+	let Pattern = /^[a-zA-Z0-9가-힣]{4,20}$/;
 	
 	if(Pattern.test(userNick)==false){
 		$("#nickname").addClass("error-border")
@@ -196,18 +205,18 @@ function nicknameCheck (){
 
 
 function nextStep(){
-	var errorLabel = $("#id_error, #pass_error,#name_error,#nickname_error");
-	var checkInput = $("#signup1 input[type=text], #pass");
+	let errorLabel = $("#id_error, #pass_error,#name_error,#nickname_error");
+	let checkInput = $("#signup1 input[type=text], #pass");
 	
 
-	var arr = new Array();
-	for(var i =0 ; i<checkInput.length ; i++){
+	let arr = new Array();
+	for(let i =0 ; i<checkInput.length ; i++){
 		arr[i] =  checkInput.eq(i).attr("placeholder");
 
 	}
 
 
-	for(var i =0 ; i< checkInput.length ; i++){	
+	for(let i =0 ; i< checkInput.length ; i++){	
 		if(checkInput[i].value == ""){
 			errorLabel.eq(i).html(arr[i]+"를 입력해 주세요.");
 			checkInput.eq(i).addClass("error-border");
@@ -216,22 +225,22 @@ function nextStep(){
 }
 
 $('document').ready(function() {
-      var area0 = ["월","1","2","3","4","5","6","7","8","9","10","11","12"];
-      var area1 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-      var area2 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"];
-      var area3 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-      var area4 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
-      var area5 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-      var area6 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
-      var area7 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-      var area8 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-      var area9 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
-      var area10 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-      var area11 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
-      var area12 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+      let area0 = ["월","1","2","3","4","5","6","7","8","9","10","11","12"];
+      let area1 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+      let area2 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29"];
+      let area3 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+      let area4 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
+      let area5 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+      let area6 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
+      let area7 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+      let area8 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+      let area9 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
+      let area10 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
+      let area11 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
+      let area12 = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
 
      // 시/도 선택 박스 초기화
-     $("select[name^=month]").each(function() {
+     $("#month").each(function() {
       $selsido = $(this);
       $.each(eval(area0), function() {
        $selsido.append("<option value='"+this+"'>"+this+"</option>");
@@ -240,9 +249,9 @@ $('document').ready(function() {
      });
 
      // 시/도 선택시 구/군 설정
-     $("select[name^=month]").change(function() {
-      var area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
-      var $gugun = $(this).next(); // 선택영역 군구 객체
+     $("#month").change(function() {
+      let area = "area"+$("option",$(this)).index($("option:selected",$(this))); // 선택지역의 구군 Array
+      let $gugun = $(this).next(); // 선택영역 군구 객체
       $("option",$gugun).remove(); // 구군 초기화
 
       if(area == "area0")
@@ -257,11 +266,11 @@ $('document').ready(function() {
 
 
 function birthCheck(){
-	var year = $("#year");
-	var errorLabel =$("#birth_error");
-	var month = $("#month > option:selected").val();
-	var day  = $("#day > option:selected").val();
-	var Pattern=/^[0-9]{4}$/;
+	let year = $("#year");
+	let errorLabel =$("#birth_error");
+	let month = $("#month > option:selected").val();
+	let day  = $("#day > option:selected").val();
+	let Pattern=/^[0-9]{4}$/;
 
 	if(Pattern.test(year.val())== false){
 		errorLabel.html("생년월일이 올바르지 않습니다");
@@ -280,7 +289,7 @@ function birthCheck(){
 		$("#day").css("border", "1px solid #E0E0E0");
 	}
 	
-	var errorLable = $("#signup2 tr td>label");
+	let errorLable = $("#signup2 tr td>label");
 }
 
 function lengthCheck(input, max) {
@@ -293,8 +302,8 @@ function lengthCheck(input, max) {
 
 
 function genderCheck(){
-	var gender = $("#gender > option:selected").val();
-	var errorLabel = $("#gender_error");
+	let gender = $("#gender > option:selected").val();
+	let errorLabel = $("#gender_error");
 	if(gender =="-성별선택-"){
 		errorLabel.html("성별을 선택해주세요.");
 		$("#gender").css("border", "2px solid red")
@@ -303,17 +312,6 @@ function genderCheck(){
 		$("#gender").css("border", "1px solid #E0E0E0")
 	}
 }
-
-
-/*function inputEvent(e) {
-    if (e.key.match(/[^0-9]/g)) {
-      e.target.value = e.target.value.replace(/[^0-9]/g, '');
-    }
-  }
-
-  var numericField = document.getElementById('year');
-  numericField.addEventListener('input', inputEvent);*/
-
 
 
 
@@ -329,8 +327,8 @@ function sample6_execDaumPostcode() {
 
                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
+                let addr = ''; // 주소 변수
+                let extraAddr = ''; // 참고항목 변수
 
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
@@ -371,10 +369,10 @@ function sample6_execDaumPostcode() {
     }
 
 function hpCheck(){
-	var hpPattern = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
-	var hp1 = $("#hp_1");
-	var errorLabel1 =$("#hp_error1");
-	var hpValue = hp1.val().replace(/-/g,'');  
+	let hpPattern = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
+	let hp1 = $("#hp_1");
+	let errorLabel1 =$("#hp_error1");
+	let hpValue = hp1.val().replace(/-/g,'');  
 
 	if (hpPattern.test(hpValue)==false){
 		errorLabel1.html("휴대폰 번호가 올바른 형식이 아닙니다.");
@@ -389,10 +387,10 @@ function hpCheck(){
 }
 
 function hp2Check(){
-	var hp2 = $("#hp_2");
-	var hpPattern =/^(01[0-9]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-	var errorLabel =$("#hp_error2");
-	var hp2Val = hp2.val().replace(/-/g,"");
+	let hp2 = $("#hp_2");
+	let hpPattern =/^(01[0-9]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+	let errorLabel =$("#hp_error2");
+	let hp2Val = hp2.val().replace(/-/g,"");
 
 	if(hp2Val==""){
 		hp2.removeClass("error-border");
@@ -414,16 +412,16 @@ function hp2Check(){
 
 
 function signupCheck(){                                  
-	var gender = $("#gender > option:selected").val();
-	var month = $("#month > option:selected").val();
-	var day = $("#day > option:selected").val();
-	var email = $("#email_second > option:selected").val();
-	var errorLabel = $("#gender_error");
-	var errorLabel2 = $("#hp_error1");
-	var hp1 = $("#hp_1");
-	var etc = $("#year, #hp_1, #email_first, #addr_first, #addr_detail");                  // 생년,hp1, 이메일(앞), 주소, 상세주소. 
-	var errorLabeletc= $("#birth_error, #hp_error1, #email_error, #addr_error , #addrdetail_error");
-	var arr = new Array();
+	let gender = $("#gender > option:selected").val();
+	let month = $("#month > option:selected").val();
+	let day = $("#day > option:selected").val();
+	let email = $("#email_second > option:selected").val();
+	let errorLabel = $("#gender_error");
+	let errorLabel2 = $("#hp_error1");
+	let hp1 = $("#hp_1");
+	let etc = $("#year, #hp_1, #email_first, #addr_first, #addr_detail");                  // 생년,hp1, 이메일(앞), 주소, 상세주소. 
+	let errorLabeletc= $("#birth_error, #hp_error1, #email_error, #addr_error , #addrdetail_error");
+	let arr = new Array();
 
 	if(gender =="-성별선택-"){
 		errorLabel.html("성별을 선택해주세요.");
@@ -443,11 +441,11 @@ function signupCheck(){
 	}
 
 
-	for(var i = 0 ; i<etc.length ; i++){
+	for(let i = 0 ; i<etc.length ; i++){
 		arr[i] = etc.eq(i).attr("placeholder");
 	}
 
-	for( var j = 0 ; j< etc.length;j++){
+	for( let j = 0 ; j< etc.length;j++){
 		if (etc.eq(j).val() == ""){
 		errorLabeletc.eq(j).html(arr[j]+"를 입력해주세요.");
 		etc.eq(j).addClass("error-border");
@@ -458,15 +456,15 @@ function signupCheck(){
 
 
 function onsub(){
-	var errorLabel = $("#signup2 tr td>label");
-	var arr = new Array();
-	for (var i = 0 ; i< errorLabel.length; i++){
+	let errorLabel = $("#signup2 tr td>label");
+	let arr = new Array();
+	for (let i = 0 ; i< errorLabel.length; i++){
 		arr[i] = errorLabel.eq(i).html();
 	}
 
 	
 
-	for(var j = 0 ; j < arr.length; j++){    // for문으로 돌면서 에러 라벨의 공백이 아닌게 하나라도 있으면 false.
+	for(let j = 0 ; j < arr.length; j++){    // for문으로 돌면서 에러 라벨의 공백이 아닌게 하나라도 있으면 false.
 		if(arr[j] != ""){
 			return false;
 		}
@@ -486,7 +484,7 @@ $(function(){   // 이메일을 적는 부분과 어떤 메일인지 선택한 �
 		}
 	});
 	$("#email_second").change(function(){
-		var emailVal = $("#email_second > option:selected").val();
+		let emailVal = $("#email_second > option:selected").val();
 		if(emailVal == "-이메일 선택-"){
 			$(this).css("border", "2px solid red");
 		}else{
@@ -496,7 +494,7 @@ $(function(){   // 이메일을 적는 부분과 어떤 메일인지 선택한 �
 	});
 
 	$("#email_second").change(function(){   // 이메일 선택부분( select의 value값 이용)
-		var emailVal = $("#email_second > option:selected").val();
+		let emailVal = $("#email_second > option:selected").val();
 
 		if(emailVal ==1){
 			$("#emailVal").attr("readonly", false);
@@ -592,46 +590,7 @@ $(function(){
 
 
 
-$(function(){
-    var number;
-    
-    $('#hpCheckBtn').click(function() {
-		if (!$('#hp_1').hasClass("error-value")) {
-    	var phone = $('#hp_1').val().trim();
-        $.ajax({
-            url : "dbprocess/Sms_Number_Check.jsp",
-            data : {"phone" : phone},
-            type : "POST",
-            success : function(data){
-                number = data.trim();
-            }
-        });
-        alert("인증번호를 전송하였습니다.");  
-  	}
-        else
-        {
-			alert("휴대폰 번호를 다시 확인해주세요.");
-		}           
-    });
-    
-    $('#hpCheckBtn2').click(function(){ 
-        var inputnumber = $('#hpCheckInput').val().trim();
-        
-        if(inputnumber == number)
-        {
-            alert("인증에 성공하였습니다.");
-            $("#hpCheckInput").prop("disabled", true);
-            $("#hp_1").prop("disabled", true);
-            $("#hpCheckBtn").prop("disabled", true);
-            $("#hpCheckBtn2").prop("disabled", true);
-        }
-        else
-        {
-            alert("인증번호를 다시 확인해주세요.");
-        }
-        
-    });
-});
+
 
 
 

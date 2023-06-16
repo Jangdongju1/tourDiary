@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dao.Dao;
+import dao.DiaryDao;
 import factory.AttractionSelectionFactory;
 import factory.StringBuliderFactory;
 import model.AttractionSelection;
@@ -43,9 +43,9 @@ public class InsertDiary {
 	@Autowired AttractionSelectionFactory userUpload;
 	@Autowired ArrayList<AttractionSelection> uploadDataList;
 	@Autowired StringBuliderFactory hashDataBuild;
-	@Autowired Dao insertTextData;
-	@Autowired Dao maxIndex;
-	@Autowired Dao insertFileUpload;
+	@Autowired DiaryDao insertTextData;
+	@Autowired DiaryDao maxIndex;
+	@Autowired DiaryDao insertFileUpload;
 	
 	// 유저가 입력한 TEXT데이터와  업로드한 사진 파일에 대한 데이터 가공 및 저장처리.
 	private final ObjectMapper objectMapper;

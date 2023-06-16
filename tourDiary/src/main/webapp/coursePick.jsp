@@ -44,8 +44,7 @@
 	<jsp:useBean class="model.Attraction" id="data"/>
 	
 	<%
-		// 서버로부터 json형식으로 가져온 Data를 JS로 넘긴다. 
-		// 그냥 hidden의 값으로 지정할 경우 "때문에 깨져서 제대로 전달 안되모르로 인코딩이 필수.
+		
 		String json =(String) request.getAttribute("courseData");
 		String encodedData = Base64.getEncoder().encodeToString(json.getBytes());	
 				

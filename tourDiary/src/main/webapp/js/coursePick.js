@@ -174,7 +174,7 @@ function plus(att_num, lat, lng){// 지도에서 선택한 여행지를 리스�
 		temp5 = document.createElement("div");
 		temp6 = document.createElement("div");
 		temp.append(temp5);
-		temp.append(temp6);
+		//temp.append(temp6);
 		
 		temp6.innerHTML = "둘사이 거리 및 소요시간";  // 조건부 생성요소에 대한 값지정.
 	}
@@ -187,7 +187,7 @@ function plus(att_num, lat, lng){// 지도에서 선택한 여행지를 리스�
 		
 		if(childList.length > 1){// 추가되는 리스트 컨데이너의 자식요소의 배열의 길이 가 1이상일때(제일 첫요소 제외)   첫요소란 1) 제일처음 생성된 요소 및  2)두번째 요소였다가 첫번째 요소가 삭제되어 첫번째 요소가 된 것을 말함.
 			if(childList[1].childNodes.length>3){//만일 제일첫요소의 자식요소가 4개 이상이면.
-				childList[1].removeChild(childList[1].childNodes[4]);//5번째 자식요소 삭제
+				//childList[1].removeChild(childList[1].childNodes[4]);//5번째 자식요소 삭제
 				childList[1].removeChild(childList[1].childNodes[3]);// 4번째도 삭제 .
 			}
 		}

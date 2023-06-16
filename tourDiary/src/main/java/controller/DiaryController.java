@@ -1,6 +1,7 @@
 package controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,7 @@ public class DiaryController {
 	@Autowired GetAttraction getAttraction;
 	@Autowired InsertDiary regDiary;
 	@Autowired GetDiaryData getDiary;
+	@Autowired GetDiaryData increaseCount;
 	@Autowired GetInitContent getContent;
 	@Autowired GetAreaContentTotal getTotalContent;
 	@Autowired GetAreaContentJeju getJeju;
@@ -82,7 +84,8 @@ public class DiaryController {
 	}
 	
 	@RequestMapping(value = "getDiaryData", method = RequestMethod.GET)
-	public String getDiaryData(@RequestParam("post_Num") int postNum, HttpServletRequest request) {
+	public String getDiaryData(@RequestParam("post_Num") int postNum, HttpServletRequest request, HttpServletResponse response) {
+		increaseCount.increaseViewCount(postNum, request, response);
 		getDiary.getDiaryData(postNum, request);
 		
 		return "DiaryView.jsp";

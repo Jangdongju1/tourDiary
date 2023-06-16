@@ -106,7 +106,7 @@
 			<div>
 				<div id="userPic"></div>
 				<div id="userPicReg">사진등록</div>
-				<div id="userIdWrap"><p>userId</p></div>
+				<div id="userIdWrap"><p><%= id%></p></div>
 				<input type="text" id="contentTitle" name="contentTitle" placeholder="제목을 입력하세요">	
 				<div id="dateRange"><p><%= startDate%></p>&nbsp;&nbsp;~&nbsp;&nbsp;<p><%= endDate%></p></div>
 				<div id="totalDays"><%= totalDate-1%>박 <%= totalDate%>일</div>

@@ -42,7 +42,6 @@
 						<li data-target = "gyeonsang">경상</li>
 						<li data-target ="jeolla">전라</li>
 						<li data-target ="jeju">제주</li>
-						<li>여행일수</li>
 					</ul>
 				</div>
 			</div>
