@@ -8,6 +8,7 @@
 ##### - frontend : JavaScript, HTML, CSS
 ##### - API : 1) Kakao 주소 , 2) Kakao Map, 3)좌표계관련 Restful Api 
 ### 4. 기능설명
+#### - 로그인 및 회원가입(생략)
 #### - 여행지 선택
 ![image](https://github.com/Jangdongju1/tourDiary/assets/129809021/40c18188-050e-4d00-83ee-25186754d5cf)
 ##### * KakaoMap API를 활용하여 DB상에 등록된 여행지 시각화
