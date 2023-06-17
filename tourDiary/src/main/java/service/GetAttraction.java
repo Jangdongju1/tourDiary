@@ -10,12 +10,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.DiaryDao;
+import factory.StringBuliderFactory;
 import model.Attraction;
 import model.CombinedLists;
 import model.DiaryWriter;
 
 @Service
 public class GetAttraction {
+	@Autowired StringBuliderFactory beanFactory;
 	private final ObjectMapper objectMapper;
 	// 서로다른 속성의 JSON 배열들을 서버에서 처리하기 위해서 Jackson 라이브러리를 Bean으로 등록하고 사용하였음.
 	// form Data의 요청헤더 타입이  application/json이 아니므로 @RequestBody를 사용한 매핑을 시도하면 415(지원하지 않는 형식) 에러가 발생함.
@@ -43,9 +45,10 @@ public class GetAttraction {
 			e.printStackTrace();
 		}
 		
-		StringBuilder queryBuilder  = new StringBuilder("(");
-		
+	
+		StringBuilder queryBuilder = beanFactory.stringBuilderFactory();
 		for(int i=0 ; i< pickNum.size(); i++) {
+			queryBuilder.append("(");
 			queryBuilder.append(pickNum.get(i).getAttraction_num()).append(",");
 		}
 		queryBuilder.setLength(queryBuilder.length()-1);

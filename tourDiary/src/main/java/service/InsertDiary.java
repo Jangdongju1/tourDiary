@@ -241,14 +241,9 @@ public class InsertDiary {
 			uploadDataList.get(i).setPost_Num(uploadIndex);
 		}
 		
-		
-		
 		boolean success = insertFileUpload.insertUserUpload(uploadDataList);
 		
-		
-		
 		request.setAttribute("post_Num", uploadIndex);
-		
 		
 		return success; 
 	}
