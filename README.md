@@ -24,4 +24,8 @@
 ![image](https://github.com/Jangdongju1/tourDiary/assets/129809021/dcfa7ce6-d93f-4823-a207-6cf962756d04)
 ##### * 지역별 검색 및 키워드, 해시태그 검색(Ajax활용 비동기)
 ##### * InterSectionObserver를 활용한 무한 스크롤 방식.
+#### [메인기능 시연 영상]
+
+https://github.com/Jangdongju1/tourDiary/assets/129809021/dc5dd7a5-3501-4e5f-a021-cbc85a4b6fe0
+
 
