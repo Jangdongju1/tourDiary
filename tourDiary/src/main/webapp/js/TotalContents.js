@@ -5,7 +5,7 @@ $(function() {
 	
 	
 		// 무한스크롤 페이징.
-	let pages = 1;  // 증가할 페이지
+	let pages = 2;  // 증가할 페이지
 	let temp = 1;// 배수에 곱해질 수 
 	const maxCont = 16;
 	let searchLevel = 0;  // 검색레벨 0: 지역별 버튼을 늘렀을 경우 , 1:검색바에 검색명을 입력했을 경우.
